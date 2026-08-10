@@ -5,9 +5,13 @@
   "type": "module",
   "scripts": {
     "dev": "bun ./scripts/dev.ts",
+    "prebuild": "rm -f public/app.js public/app.css",
     "build": "vite build",
     "start": "SERVE_STATIC=1 PORT=3000 bun ./index.ts",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "deploy": "bun run build && wrangler deploy",
+    "cf-typegen": "wrangler types",
+    "upload-rmbg-model": "bun ./scripts/upload-rmbg-model.ts"
   },
   "dependencies": {
     "@gurleen-ui/core": "file:../ui/packages/core",
@@ -19,12 +23,14 @@
     "react-dom": "file:../ui/node_modules/react-dom"
   },
   "devDependencies": {
+    "@cloudflare/workers-types": "^4.20250810.0",
     "@types/bun": "latest",
     "@types/react": "^18.3.12",
     "@types/react-dom": "^18.3.1",
     "@vitejs/plugin-react": "^4.3.4",
     "typescript": "^5.7.2",
-    "vite": "^6.0.3"
+    "vite": "^6.0.3",
+    "wrangler": "^4.120.1"
   },
   "overrides": {
     "@gurleen-ui/tokens": "file:../ui/packages/tokens",

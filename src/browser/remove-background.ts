@@ -34,11 +34,18 @@ let loadPromise: Promise<Remover> | null = null;
  * Lazily load RMBG-1.4 via AutoModel (not the image-segmentation pipeline —
  * that rejects RMBG's SegformerForSemanticSegmentation model_type).
  * Prefers WebGPU; falls back to WASM/CPU.
+ *
+ * Model weights are served from this origin (`/models/...` → R2) to avoid
+ * Hugging Face CORS blocks in the browser.
  */
 export function loadBackgroundRemover(): Promise<Remover> {
   if (!loadPromise) {
     loadPromise = (async () => {
       env.allowLocalModels = false;
+      env.allowRemoteModels = true;
+      env.remoteHost = `${globalThis.location?.origin ?? ""}/models/`;
+      env.remotePathTemplate = "{model}/";
+
       const wasm = env.backends.onnx.wasm as { proxy?: boolean } | undefined;
       if (wasm) wasm.proxy = false;
 

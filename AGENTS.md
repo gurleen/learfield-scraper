@@ -77,3 +77,12 @@ Use **Bun**, not Node/npm, for app scripts. UI library lives in sibling `../ui`.
 
 - `POST /api/scrape` — `{ url }` → `RosterResult`
 - `POST /api/zip-headshots` — `{ roster, naming: "named" | "numbered" }` → `application/zip`
+- `GET /api/sports?website=` — `{ sports: { slug, title }[] }`
+
+## Deploy (Cloudflare Workers)
+
+```sh
+bun run deploy   # vite build + wrangler deploy
+```
+
+Live at **https://rosters.dragonstv.io** (`wrangler.jsonc` custom domain).
