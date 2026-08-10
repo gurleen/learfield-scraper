@@ -1,0 +1,2072 @@
+[
+  {
+    "id": "2000",
+    "name": "Abilene Christian",
+    "website": "acusports.com",
+    "conference": "WAC"
+  },
+  {
+    "id": "2005",
+    "name": "Air Force",
+    "website": "goairforcefalcons.com",
+    "conference": "Mountain West"
+  },
+  {
+    "id": "2006",
+    "name": "Akron",
+    "website": "gozips.com",
+    "conference": "MAC"
+  },
+  {
+    "id": "333",
+    "name": "Alabama",
+    "website": "rolltide.com",
+    "conference": "SEC"
+  },
+  {
+    "id": "2010",
+    "name": "Alabama A&M",
+    "website": "aamusports.com",
+    "conference": "SWAC"
+  },
+  {
+    "id": "2011",
+    "name": "Alabama State",
+    "website": "bamastatesports.com",
+    "conference": "SWAC"
+  },
+  {
+    "id": "399",
+    "name": "Albany",
+    "website": "ualbanysports.com",
+    "conference": "Am. East"
+  },
+  {
+    "id": "2016",
+    "name": "Alcorn State",
+    "website": "alcornsports.com",
+    "conference": "SWAC"
+  },
+  {
+    "id": "44",
+    "name": "American University",
+    "website": "aueagles.com",
+    "conference": "Patriot"
+  },
+  {
+    "id": "2026",
+    "name": "Appalachian State",
+    "website": "appstatesports.com",
+    "conference": "Sun Belt"
+  },
+  {
+    "id": "12",
+    "name": "Arizona",
+    "website": "arizonawildcats.com",
+    "conference": "Pac-12"
+  },
+  {
+    "id": "9",
+    "name": "Arizona State",
+    "website": "thesundevils.com",
+    "conference": "Pac-12"
+  },
+  {
+    "id": "8",
+    "name": "Arkansas",
+    "website": "astateredwolves.com",
+    "conference": "SEC"
+  },
+  {
+    "id": "2032",
+    "name": "Arkansas State",
+    "website": "astateredwolves.com",
+    "conference": "Sun Belt"
+  },
+  {
+    "id": "2029",
+    "name": "Arkansas-Pine Bluff",
+    "website": "uapblionsroar.com",
+    "conference": "SWAC"
+  },
+  {
+    "id": "349",
+    "name": "Army",
+    "website": "goairforcefalcons.com",
+    "conference": "Patriot"
+  },
+  {
+    "id": "2",
+    "name": "Auburn",
+    "website": "auburntigers.com",
+    "conference": "SEC"
+  },
+  {
+    "id": "2046",
+    "name": "Austin Peay",
+    "website": "letsgopeay.com",
+    "conference": "ASUN"
+  },
+  {
+    "id": "2050",
+    "name": "Ball State",
+    "website": "ballstatesports.com",
+    "conference": "MAC"
+  },
+  {
+    "id": "239",
+    "name": "Baylor",
+    "website": "baylorbears.com",
+    "conference": "Big 12"
+  },
+  {
+    "id": "91",
+    "name": "Bellarmine",
+    "website": "athletics.bellarmine.edu",
+    "conference": "ASUN"
+  },
+  {
+    "id": "2057",
+    "name": "Belmont",
+    "website": "belmontbruins.com",
+    "conference": "MVC"
+  },
+  {
+    "id": "2065",
+    "name": "Bethune-Cookman",
+    "website": "bcuathletics.com",
+    "conference": "SWAC"
+  },
+  {
+    "id": "2066",
+    "name": "Binghamton",
+    "website": "bubearcats.com",
+    "conference": "Am. East"
+  },
+  {
+    "id": "68",
+    "name": "Boise State",
+    "website": "broncosports.com",
+    "conference": "Mountain West"
+  },
+  {
+    "id": "103",
+    "name": "Boston College",
+    "website": "bceagles.com",
+    "conference": "ACC"
+  },
+  {
+    "id": "104",
+    "name": "Boston University",
+    "website": "goterriers.com",
+    "conference": "Patriot"
+  },
+  {
+    "id": "189",
+    "name": "Bowling Green",
+    "website": "bgsufalcons.com",
+    "conference": "MAC"
+  },
+  {
+    "id": "71",
+    "name": "Bradley",
+    "website": "bradleybraves.com",
+    "conference": "MVC"
+  },
+  {
+    "id": "225",
+    "name": "Brown",
+    "website": "brownbears.com",
+    "conference": "Ivy"
+  },
+  {
+    "id": "2803",
+    "name": "Bryant",
+    "website": "bryantbulldogs.com",
+    "conference": "Am. East"
+  },
+  {
+    "id": "2083",
+    "name": "Bucknell",
+    "website": "bucknellbison.com",
+    "conference": "Patriot"
+  },
+  {
+    "id": "2084",
+    "name": "Buffalo",
+    "website": "baylorbears.com",
+    "conference": "MAC"
+  },
+  {
+    "id": "2086",
+    "name": "Butler",
+    "website": "butlersports.com",
+    "conference": "Big East"
+  },
+  {
+    "id": "13",
+    "name": "Cal Poly",
+    "website": "goccusports.com",
+    "conference": "Big West"
+  },
+  {
+    "id": "2934",
+    "name": "Cal State Bakersfield",
+    "website": "gorunners.com",
+    "conference": "Big West"
+  },
+  {
+    "id": "2239",
+    "name": "Cal State Fullerton",
+    "website": "fullertontitans.com",
+    "conference": "Big West"
+  },
+  {
+    "id": "2463",
+    "name": "Cal State Northridge",
+    "website": "GoMatadors.com",
+    "conference": "Big West"
+  },
+  {
+    "id": "25",
+    "name": "California",
+    "website": "cbulancers.com",
+    "conference": "Pac-12"
+  },
+  {
+    "id": "2856",
+    "name": "California Baptist",
+    "website": "cbulancers.com",
+    "conference": "WAC"
+  },
+  {
+    "id": "2097",
+    "name": "Campbell",
+    "website": "gocamels.com",
+    "conference": "CAA"
+  },
+  {
+    "id": "2099",
+    "name": "Canisius",
+    "website": "gogriffs.com",
+    "conference": "MAAC"
+  },
+  {
+    "id": "2110",
+    "name": "Central Arkansas",
+    "website": "ucasports.com",
+    "conference": "ASUN"
+  },
+  {
+    "id": "2115",
+    "name": "Central Connecticut",
+    "website": "ccsubluedevils.com",
+    "conference": "NEC"
+  },
+  {
+    "id": "2117",
+    "name": "Central Michigan",
+    "website": "cmuchippewas.com",
+    "conference": "MAC"
+  },
+  {
+    "id": "232",
+    "name": "Charleston",
+    "website": "cofcsports.com",
+    "conference": "CAA"
+  },
+  {
+    "id": "2127",
+    "name": "Charleston Southern",
+    "website": "csusports.com",
+    "conference": "Big South"
+  },
+  {
+    "id": "2429",
+    "name": "Charlotte",
+    "website": "queensathletics.com",
+    "conference": "C-USA"
+  },
+  {
+    "id": "236",
+    "name": "Chattanooga",
+    "website": "gojaspers.com",
+    "conference": "Southern"
+  },
+  {
+    "id": "2130",
+    "name": "Chicago State",
+    "website": "gocsucougars.com",
+    "conference": "Indep."
+  },
+  {
+    "id": "2132",
+    "name": "Cincinnati",
+    "website": "gobearcats.com",
+    "conference": "American"
+  },
+  {
+    "id": "228",
+    "name": "Clemson",
+    "website": "clemsontigers.com",
+    "conference": "ACC"
+  },
+  {
+    "id": "325",
+    "name": "Cleveland State",
+    "website": "csuvikings.com",
+    "conference": "Horizon"
+  },
+  {
+    "id": "324",
+    "name": "Coastal Carolina",
+    "website": "goccusports.com",
+    "conference": "Sun Belt"
+  },
+  {
+    "id": "2142",
+    "name": "Colgate",
+    "website": "gocolgateraiders.com",
+    "conference": "Patriot"
+  },
+  {
+    "id": "38",
+    "name": "Colorado",
+    "website": "csurams.com",
+    "conference": "Pac-12"
+  },
+  {
+    "id": "36",
+    "name": "Colorado State",
+    "website": "csurams.com",
+    "conference": "Mountain West"
+  },
+  {
+    "id": "171",
+    "name": "Columbia",
+    "website": "mutigers.com",
+    "conference": "Ivy"
+  },
+  {
+    "id": "2154",
+    "name": "Coppin State",
+    "website": "coppinstatesports.com",
+    "conference": "MEAC"
+  },
+  {
+    "id": "172",
+    "name": "Cornell",
+    "website": "cornellbigred.com",
+    "conference": "Ivy"
+  },
+  {
+    "id": "156",
+    "name": "Creighton",
+    "website": "gocreighton.com",
+    "conference": "Big East"
+  },
+  {
+    "id": "159",
+    "name": "Dartmouth",
+    "website": "dartmouthsports.com",
+    "conference": "Ivy"
+  },
+  {
+    "id": "2166",
+    "name": "Davidson",
+    "website": "davidsonwildcats.com",
+    "conference": "A 10"
+  },
+  {
+    "id": "2168",
+    "name": "Dayton",
+    "website": "daytonflyers.com",
+    "conference": "A 10"
+  },
+  {
+    "id": "48",
+    "name": "Delaware",
+    "website": "bluehens.com",
+    "conference": "CAA"
+  },
+  {
+    "id": "2169",
+    "name": "Delaware State",
+    "website": "dsuhornets.com",
+    "conference": "MEAC"
+  },
+  {
+    "id": "2172",
+    "name": "Denver",
+    "website": "goduke.com",
+    "conference": "Summit"
+  },
+  {
+    "id": "305",
+    "name": "DePaul",
+    "website": "depaulbluedemons.com",
+    "conference": "Big East"
+  },
+  {
+    "id": "2174",
+    "name": "Detroit Mercy",
+    "website": "detroittitans.com",
+    "conference": "Horizon"
+  },
+  {
+    "id": "2181",
+    "name": "Drake",
+    "website": "godrakebulldogs.com",
+    "conference": "MVC"
+  },
+  {
+    "id": "2182",
+    "name": "Drexel",
+    "website": "drexeldragons.com",
+    "conference": "CAA"
+  },
+  {
+    "id": "150",
+    "name": "Duke",
+    "website": "goduke.com",
+    "conference": "ACC"
+  },
+  {
+    "id": "2184",
+    "name": "Duquesne",
+    "website": "GoDuquesne.com",
+    "conference": "A 10"
+  },
+  {
+    "id": "151",
+    "name": "East Carolina",
+    "website": "ecupirates.com",
+    "conference": "American"
+  },
+  {
+    "id": "2193",
+    "name": "East Tennessee State",
+    "website": "etsubucs.com",
+    "conference": "Southern"
+  },
+  {
+    "id": "2197",
+    "name": "Eastern Illinois",
+    "website": "eiupanthers.com",
+    "conference": "OVC"
+  },
+  {
+    "id": "2198",
+    "name": "Eastern Kentucky",
+    "website": "ekusports.com",
+    "conference": "ASUN"
+  },
+  {
+    "id": "2199",
+    "name": "Eastern Michigan",
+    "website": "emueagles.com",
+    "conference": "MAC"
+  },
+  {
+    "id": "331",
+    "name": "Eastern Washington",
+    "website": "goeags.com",
+    "conference": "Big Sky"
+  },
+  {
+    "id": "2210",
+    "name": "Elon",
+    "website": "elonphoenix.com",
+    "conference": "CAA"
+  },
+  {
+    "id": "339",
+    "name": "Evansville",
+    "website": "gopurpleaces.com",
+    "conference": "MVC"
+  },
+  {
+    "id": "2217",
+    "name": "Fairfield",
+    "website": "fairfieldstags.com",
+    "conference": "MAAC"
+  },
+  {
+    "id": "161",
+    "name": "Fairleigh Dickinson",
+    "website": "fduknights.com",
+    "conference": "NEC"
+  },
+  {
+    "id": "57",
+    "name": "Florida",
+    "website": "floridagators.com",
+    "conference": "SEC"
+  },
+  {
+    "id": "50",
+    "name": "Florida A&M",
+    "website": "famuathletics.com",
+    "conference": "SWAC"
+  },
+  {
+    "id": "2226",
+    "name": "Florida Atlantic",
+    "website": "fausports.com",
+    "conference": "C-USA"
+  },
+  {
+    "id": "526",
+    "name": "Florida Gulf Coast",
+    "website": "fgcuathletics.com",
+    "conference": "ASUN"
+  },
+  {
+    "id": "2229",
+    "name": "Florida International",
+    "website": "fiusports.com",
+    "conference": "C-USA"
+  },
+  {
+    "id": "52",
+    "name": "Florida State",
+    "website": "seminoles.com",
+    "conference": "ACC"
+  },
+  {
+    "id": "2230",
+    "name": "Fordham",
+    "website": "fordhamsports.com",
+    "conference": "A 10"
+  },
+  {
+    "id": "12345",
+    "name": "Franklin & Marshall",
+    "website": "godiplomats.com",
+    "conference": "EIWA"
+  },
+  {
+    "id": "278",
+    "name": "Fresno State",
+    "website": "osubeavers.com",
+    "conference": "Mountain West"
+  },
+  {
+    "id": "231",
+    "name": "Furman",
+    "website": "furmanpaladins.com",
+    "conference": "Southern"
+  },
+  {
+    "id": "2241",
+    "name": "Gardner-Webb",
+    "website": "gwusports.com",
+    "conference": "Big South"
+  },
+  {
+    "id": "2244",
+    "name": "George Mason",
+    "website": "gomason.com",
+    "conference": "A 10"
+  },
+  {
+    "id": "45",
+    "name": "George Washington",
+    "website": "gwsports.com/index.html",
+    "conference": "A 10"
+  },
+  {
+    "id": "46",
+    "name": "Georgetown",
+    "website": "guhoyas.com",
+    "conference": "Big East"
+  },
+  {
+    "id": "61",
+    "name": "Georgia",
+    "website": "georgiadogs.com",
+    "conference": "SEC"
+  },
+  {
+    "id": "290",
+    "name": "Georgia Southern",
+    "website": "gseagles.com",
+    "conference": "Sun Belt"
+  },
+  {
+    "id": "2247",
+    "name": "Georgia State",
+    "website": "georgiastatesports.com",
+    "conference": "Sun Belt"
+  },
+  {
+    "id": "59",
+    "name": "Georgia Tech",
+    "website": "ramblinwreck.com",
+    "conference": "ACC"
+  },
+  {
+    "id": "2250",
+    "name": "Gonzaga",
+    "website": "gozags.com",
+    "conference": "WCC"
+  },
+  {
+    "id": "2755",
+    "name": "Grambling",
+    "website": "gsutigers.com",
+    "conference": "SWAC"
+  },
+  {
+    "id": "2253",
+    "name": "Grand Canyon",
+    "website": "gculopes.com",
+    "conference": "WAC"
+  },
+  {
+    "id": "2739",
+    "name": "Green Bay",
+    "website": "greenbayphoenix.com",
+    "conference": "Horizon"
+  },
+  {
+    "id": "2261",
+    "name": "Hampton",
+    "website": "hamptonpirates.com",
+    "conference": "CAA"
+  },
+  {
+    "id": "42",
+    "name": "Hartford",
+    "website": "hartfordhawks.com",
+    "conference": "Indep."
+  },
+  {
+    "id": "108",
+    "name": "Harvard",
+    "website": "gocrimson.com",
+    "conference": "Ivy"
+  },
+  {
+    "id": "62",
+    "name": "Hawai'i",
+    "website": "hubison.com",
+    "conference": "Big West"
+  },
+  {
+    "id": "2272",
+    "name": "High Point",
+    "website": "highpointpanthers.com",
+    "conference": "Big South"
+  },
+  {
+    "id": "2275",
+    "name": "Hofstra",
+    "website": "gohofstra.com",
+    "conference": "CAA"
+  },
+  {
+    "id": "107",
+    "name": "Holy Cross",
+    "website": "goholycross.com",
+    "conference": "Patriot"
+  },
+  {
+    "id": "248",
+    "name": "Houston",
+    "website": "uhcougars.com",
+    "conference": "American"
+  },
+  {
+    "id": "2277",
+    "name": "Houston Christian",
+    "website": "hcuhuskies.com",
+    "conference": "Southland"
+  },
+  {
+    "id": "47",
+    "name": "Howard",
+    "website": "hubison.com",
+    "conference": "MEAC"
+  },
+  {
+    "id": "70",
+    "name": "Idaho",
+    "website": "govandals.com",
+    "conference": "Big Sky"
+  },
+  {
+    "id": "304",
+    "name": "Idaho State",
+    "website": "isubengals.com",
+    "conference": "Big Sky"
+  },
+  {
+    "id": "356",
+    "name": "Illinois",
+    "website": "GoRedbirds.com",
+    "conference": "Big Ten"
+  },
+  {
+    "id": "2287",
+    "name": "Illinois State",
+    "website": "GoRedbirds.com",
+    "conference": "MVC"
+  },
+  {
+    "id": "2916",
+    "name": "Incarnate Word",
+    "website": "uiwcardinals.com",
+    "conference": "Southland"
+  },
+  {
+    "id": "84",
+    "name": "Indiana",
+    "website": "gosycamores.com",
+    "conference": "Big Ten"
+  },
+  {
+    "id": "282",
+    "name": "Indiana State",
+    "website": "gosycamores.com",
+    "conference": "MVC"
+  },
+  {
+    "id": "314",
+    "name": "Iona",
+    "website": "ionagaels.com",
+    "conference": "MAAC"
+  },
+  {
+    "id": "2294",
+    "name": "Iowa",
+    "website": "hawkeyesports.com",
+    "conference": "Big Ten"
+  },
+  {
+    "id": "66",
+    "name": "Iowa State",
+    "website": "cyclones.com",
+    "conference": "Big 12"
+  },
+  {
+    "id": "2296",
+    "name": "Jackson State",
+    "website": "gojsutigers.com",
+    "conference": "SWAC"
+  },
+  {
+    "id": "294",
+    "name": "Jacksonville",
+    "website": "judolphins.com",
+    "conference": "ASUN"
+  },
+  {
+    "id": "55",
+    "name": "Jacksonville State",
+    "website": "jaxstatesports.com",
+    "conference": "ASUN"
+  },
+  {
+    "id": "256",
+    "name": "James Madison",
+    "website": "jmusports.com",
+    "conference": "Sun Belt"
+  },
+  {
+    "id": "2305",
+    "name": "Kansas",
+    "website": "kuathletics.com",
+    "conference": "Big 12"
+  },
+  {
+    "id": "140",
+    "name": "Kansas City",
+    "website": "kstatesports.com",
+    "conference": "Summit"
+  },
+  {
+    "id": "2306",
+    "name": "Kansas State",
+    "website": "kstatesports.com",
+    "conference": "Big 12"
+  },
+  {
+    "id": "338",
+    "name": "Kennesaw State",
+    "website": "ksuowls.com",
+    "conference": "ASUN"
+  },
+  {
+    "id": "2309",
+    "name": "Kent State",
+    "website": "kentstatesports.com",
+    "conference": "MAC"
+  },
+  {
+    "id": "96",
+    "name": "Kentucky",
+    "website": "ukathletics.com",
+    "conference": "SEC"
+  },
+  {
+    "id": "2325",
+    "name": "La Salle",
+    "website": "goexplorers.com",
+    "conference": "A 10"
+  },
+  {
+    "id": "322",
+    "name": "Lafayette",
+    "website": "goleopards.com",
+    "conference": "Patriot"
+  },
+  {
+    "id": "2320",
+    "name": "Lamar",
+    "website": "lamarcardinals.com",
+    "conference": "Southland"
+  },
+  {
+    "id": "2329",
+    "name": "Lehigh",
+    "website": "lehighsports.com",
+    "conference": "Patriot"
+  },
+  {
+    "id": "2335",
+    "name": "Liberty",
+    "website": "LibertyFlames.com",
+    "conference": "ASUN"
+  },
+  {
+    "id": "288",
+    "name": "Lipscomb",
+    "website": "lipscombsports.com",
+    "conference": "ASUN"
+  },
+  {
+    "id": "2031",
+    "name": "Little Rock",
+    "website": "lrtrojans.com",
+    "conference": "OVC"
+  },
+  {
+    "id": "299",
+    "name": "Long Beach State",
+    "website": "longbeachstate.com",
+    "conference": "Big West"
+  },
+  {
+    "id": "112358",
+    "name": "Long Island University",
+    "website": "liuathletics.com",
+    "conference": "NEC"
+  },
+  {
+    "id": "2344",
+    "name": "Longwood",
+    "website": "longwoodlancers.com",
+    "conference": "Big South"
+  },
+  {
+    "id": "309",
+    "name": "Louisiana",
+    "website": "latechsports.com",
+    "conference": "Sun Belt"
+  },
+  {
+    "id": "2348",
+    "name": "Louisiana Tech",
+    "website": "latechsports.com",
+    "conference": "C-USA"
+  },
+  {
+    "id": "97",
+    "name": "Louisville",
+    "website": "gocards.com",
+    "conference": "ACC"
+  },
+  {
+    "id": "2350",
+    "name": "Loyola Chicago",
+    "website": "loyolaramblers.com",
+    "conference": "A 10"
+  },
+  {
+    "id": "2352",
+    "name": "Loyola Maryland",
+    "website": "loyolagreyhounds.com",
+    "conference": "Patriot"
+  },
+  {
+    "id": "2351",
+    "name": "Loyola Marymount",
+    "website": "LMULions.com",
+    "conference": "WCC"
+  },
+  {
+    "id": "311",
+    "name": "Maine",
+    "website": "goredfoxes.com",
+    "conference": "Am. East"
+  },
+  {
+    "id": "2363",
+    "name": "Manhattan",
+    "website": "gojaspers.com",
+    "conference": "MAAC"
+  },
+  {
+    "id": "2368",
+    "name": "Marist",
+    "website": "goredfoxes.com",
+    "conference": "MAAC"
+  },
+  {
+    "id": "269",
+    "name": "Marquette",
+    "website": "gomarquette.com",
+    "conference": "Big East"
+  },
+  {
+    "id": "276",
+    "name": "Marshall",
+    "website": "herdzone.com",
+    "conference": "Sun Belt"
+  },
+  {
+    "id": "120",
+    "name": "Maryland",
+    "website": "loyolagreyhounds.com",
+    "conference": "Big Ten"
+  },
+  {
+    "id": "2379",
+    "name": "Maryland-Eastern Shore",
+    "website": "easternshorehawks.com",
+    "conference": "MEAC"
+  },
+  {
+    "id": "2377",
+    "name": "McNeese",
+    "website": "mcneesesports.com",
+    "conference": "Southland"
+  },
+  {
+    "id": "235",
+    "name": "Memphis",
+    "website": "gotigersgo.com",
+    "conference": "American"
+  },
+  {
+    "id": "2382",
+    "name": "Mercer",
+    "website": "mercerbears.com",
+    "conference": "Southern"
+  },
+  {
+    "id": "2771",
+    "name": "Merrimack",
+    "website": "merrimackathletics.com",
+    "conference": "NEC"
+  },
+  {
+    "id": "2390",
+    "name": "Miami",
+    "website": "miamiredhawks.com",
+    "conference": "ACC"
+  },
+  {
+    "id": "193",
+    "name": "Miami (OH)",
+    "website": "miamiredhawks.com",
+    "conference": "MAC"
+  },
+  {
+    "id": "130",
+    "name": "Michigan",
+    "website": "mgoblue.com",
+    "conference": "Big Ten"
+  },
+  {
+    "id": "127",
+    "name": "Michigan State",
+    "website": "msuspartans.com",
+    "conference": "Big Ten"
+  },
+  {
+    "id": "2393",
+    "name": "Middle Tennessee",
+    "website": "goblueraiders.com",
+    "conference": "C-USA"
+  },
+  {
+    "id": "270",
+    "name": "Milwaukee",
+    "website": "mkepanthers.com",
+    "conference": "Horizon"
+  },
+  {
+    "id": "135",
+    "name": "Minnesota",
+    "website": "utahutes.com",
+    "conference": "Big Ten"
+  },
+  {
+    "id": "344",
+    "name": "Mississippi State",
+    "website": "hailstate.com",
+    "conference": "SEC"
+  },
+  {
+    "id": "2400",
+    "name": "Mississippi Valley State",
+    "website": "mvsusports.com",
+    "conference": "SWAC"
+  },
+  {
+    "id": "142",
+    "name": "Missouri",
+    "website": "missouristatebears.com",
+    "conference": "SEC"
+  },
+  {
+    "id": "2623",
+    "name": "Missouri State",
+    "website": "missouristatebears.com",
+    "conference": "MVC"
+  },
+  {
+    "id": "2405",
+    "name": "Monmouth",
+    "website": "monmouthhawks.com",
+    "conference": "CAA"
+  },
+  {
+    "id": "149",
+    "name": "Montana",
+    "website": "gogriz.com",
+    "conference": "Big Sky"
+  },
+  {
+    "id": "147",
+    "name": "Montana State",
+    "website": "msubobcats.com",
+    "conference": "Big Sky"
+  },
+  {
+    "id": "2413",
+    "name": "Morehead State",
+    "website": "msueagles.com",
+    "conference": "OVC"
+  },
+  {
+    "id": "2415",
+    "name": "Morgan State",
+    "website": "morganstatebears.com",
+    "conference": "MEAC"
+  },
+  {
+    "id": "116",
+    "name": "Mount St. Mary's",
+    "website": "mountathletics.com",
+    "conference": "MAAC"
+  },
+  {
+    "id": "93",
+    "name": "Murray State",
+    "website": "goracers.com",
+    "conference": "MVC"
+  },
+  {
+    "id": "2426",
+    "name": "Navy",
+    "website": "navysports.com",
+    "conference": "Patriot"
+  },
+  {
+    "id": "152",
+    "name": "NC State",
+    "website": "coppinstatesports.com",
+    "conference": "ACC"
+  },
+  {
+    "id": "158",
+    "name": "Nebraska",
+    "website": "omavs.com",
+    "conference": "Big Ten"
+  },
+  {
+    "id": "2440",
+    "name": "Nevada",
+    "website": "nevadawolfpack.com",
+    "conference": "Mountain West"
+  },
+  {
+    "id": "160",
+    "name": "New Hampshire",
+    "website": "unhwildcats.com",
+    "conference": "Am. East"
+  },
+  {
+    "id": "167",
+    "name": "New Mexico",
+    "website": "golobos.com",
+    "conference": "Mountain West"
+  },
+  {
+    "id": "166",
+    "name": "New Mexico State",
+    "website": "nmstatesports.com",
+    "conference": "WAC"
+  },
+  {
+    "id": "2443",
+    "name": "New Orleans",
+    "website": "unoprivateers.com",
+    "conference": "Southland"
+  },
+  {
+    "id": "315",
+    "name": "Niagara",
+    "website": "purpleeagles.com",
+    "conference": "MAAC"
+  },
+  {
+    "id": "2447",
+    "name": "Nicholls",
+    "website": "geauxcolonels.com",
+    "conference": "Southland"
+  },
+  {
+    "id": "2885",
+    "name": "NJIT",
+    "website": "njithighlanders.com",
+    "conference": "Am. East"
+  },
+  {
+    "id": "2450",
+    "name": "Norfolk State",
+    "website": "nsuspartans.com",
+    "conference": "MEAC"
+  },
+  {
+    "id": "2453",
+    "name": "North Alabama",
+    "website": "roarlions.com",
+    "conference": "ASUN"
+  },
+  {
+    "id": "153",
+    "name": "North Carolina",
+    "website": "gopack.com",
+    "conference": "ACC"
+  },
+  {
+    "id": "2448",
+    "name": "North Carolina A&T",
+    "website": "ncataggies.com",
+    "conference": "CAA"
+  },
+  {
+    "id": "2428",
+    "name": "North Carolina Central",
+    "website": "nccueaglepride.com",
+    "conference": "MEAC"
+  },
+  {
+    "id": "155",
+    "name": "North Dakota",
+    "website": "fightinghawks.com",
+    "conference": "Summit"
+  },
+  {
+    "id": "2449",
+    "name": "North Dakota State",
+    "website": "GoBison.com",
+    "conference": "Summit"
+  },
+  {
+    "id": "2454",
+    "name": "North Florida",
+    "website": "unfospreys.com",
+    "conference": "ASUN"
+  },
+  {
+    "id": "249",
+    "name": "North Texas",
+    "website": "meangreensports.com",
+    "conference": "C-USA"
+  },
+  {
+    "id": "111",
+    "name": "Northeastern",
+    "website": "nuhuskies.com",
+    "conference": "CAA"
+  },
+  {
+    "id": "2464",
+    "name": "Northern Arizona",
+    "website": "nauathletics.com",
+    "conference": "Big Sky"
+  },
+  {
+    "id": "2458",
+    "name": "Northern Colorado",
+    "website": "uncbears.com",
+    "conference": "Big Sky"
+  },
+  {
+    "id": "2459",
+    "name": "Northern Illinois",
+    "website": "niuhuskies.com",
+    "conference": "MAC"
+  },
+  {
+    "id": "2460",
+    "name": "Northern Iowa",
+    "website": "unipanthers.com",
+    "conference": "MVC"
+  },
+  {
+    "id": "94",
+    "name": "Northern Kentucky",
+    "website": "nkunorse.com",
+    "conference": "Horizon"
+  },
+  {
+    "id": "77",
+    "name": "Northwestern",
+    "website": "nusports.com",
+    "conference": "Big Ten"
+  },
+  {
+    "id": "2466",
+    "name": "Northwestern State",
+    "website": "nsudemons.com",
+    "conference": "Southland"
+  },
+  {
+    "id": "87",
+    "name": "Notre Dame",
+    "website": "und.com",
+    "conference": "ACC"
+  },
+  {
+    "id": "2473",
+    "name": "Oakland",
+    "website": "goldengrizzlies.com",
+    "conference": "Horizon"
+  },
+  {
+    "id": "195",
+    "name": "Ohio",
+    "website": "ohiobobcats.com",
+    "conference": "MAC"
+  },
+  {
+    "id": "194",
+    "name": "Ohio State",
+    "website": "ohiostatebuckeyes.com",
+    "conference": "Big Ten"
+  },
+  {
+    "id": "201",
+    "name": "Oklahoma",
+    "website": "soonersports.com",
+    "conference": "Big 12"
+  },
+  {
+    "id": "197",
+    "name": "Oklahoma State",
+    "website": "okstate.com",
+    "conference": "Big 12"
+  },
+  {
+    "id": "295",
+    "name": "Old Dominion",
+    "website": "odusports.com",
+    "conference": "Sun Belt"
+  },
+  {
+    "id": "145",
+    "name": "Ole Miss",
+    "website": "yalebulldogs.com",
+    "conference": "SEC"
+  },
+  {
+    "id": "2437",
+    "name": "Omaha",
+    "website": "omavs.com",
+    "conference": "Summit"
+  },
+  {
+    "id": "198",
+    "name": "Oral Roberts",
+    "website": "oruathletics.com",
+    "conference": "Summit"
+  },
+  {
+    "id": "2483",
+    "name": "Oregon",
+    "website": "goducks.com",
+    "conference": "Pac-12"
+  },
+  {
+    "id": "204",
+    "name": "Oregon State",
+    "website": "osubeavers.com",
+    "conference": "Pac-12"
+  },
+  {
+    "id": "279",
+    "name": "Pacific",
+    "website": "pacifictigers.com",
+    "conference": "WCC"
+  },
+  {
+    "id": "213",
+    "name": "Penn State",
+    "website": "kentstatesports.com",
+    "conference": "Big Ten"
+  },
+  {
+    "id": "219",
+    "name": "Pennsylvania",
+    "website": "pennathletics.com",
+    "conference": "Ivy"
+  },
+  {
+    "id": "2492",
+    "name": "Pepperdine",
+    "website": "pepperdinewaves.com",
+    "conference": "WCC"
+  },
+  {
+    "id": "221",
+    "name": "Pittsburgh",
+    "website": "pittsburghpanthers.com",
+    "conference": "ACC"
+  },
+  {
+    "id": "2501",
+    "name": "Portland",
+    "website": "portlandpilots.com",
+    "conference": "WCC"
+  },
+  {
+    "id": "2502",
+    "name": "Portland State",
+    "website": "goviks.com",
+    "conference": "Big Sky"
+  },
+  {
+    "id": "2504",
+    "name": "Prairie View A&M",
+    "website": "pvpanthers.com",
+    "conference": "SWAC"
+  },
+  {
+    "id": "2506",
+    "name": "Presbyterian",
+    "website": "gobluehose.com",
+    "conference": "Big South"
+  },
+  {
+    "id": "163",
+    "name": "Princeton",
+    "website": "goprincetontigers.com",
+    "conference": "Ivy"
+  },
+  {
+    "id": "2507",
+    "name": "Providence",
+    "website": "friars.com",
+    "conference": "Big East"
+  },
+  {
+    "id": "2509",
+    "name": "Purdue",
+    "website": "purduesports.com",
+    "conference": "Big Ten"
+  },
+  {
+    "id": "2870",
+    "name": "Purdue Fort Wayne",
+    "website": "gomastodons.com",
+    "conference": "Horizon"
+  },
+  {
+    "id": "2514",
+    "name": "Quinnipiac",
+    "website": "gobobcats.com",
+    "conference": "MAAC"
+  },
+  {
+    "id": "2515",
+    "name": "Radford",
+    "website": "radfordathletics.com",
+    "conference": "Big South"
+  },
+  {
+    "id": "227",
+    "name": "Rhode Island",
+    "website": "gorhody.com",
+    "conference": "A 10"
+  },
+  {
+    "id": "242",
+    "name": "Rice",
+    "website": "riceowls.com",
+    "conference": "C-USA"
+  },
+  {
+    "id": "257",
+    "name": "Richmond",
+    "website": "richmondspiders.com",
+    "conference": "A 10"
+  },
+  {
+    "id": "2520",
+    "name": "Rider",
+    "website": "gobroncs.com",
+    "conference": "MAAC"
+  },
+  {
+    "id": "2523",
+    "name": "Robert Morris",
+    "website": "rmucolonials.com",
+    "conference": "Horizon"
+  },
+  {
+    "id": "164",
+    "name": "Rutgers",
+    "website": "butlersports.com",
+    "conference": "Big Ten"
+  },
+  {
+    "id": "16",
+    "name": "Sacramento State",
+    "website": "tarletonsports.com",
+    "conference": "Big Sky"
+  },
+  {
+    "id": "2529",
+    "name": "Sacred Heart",
+    "website": "sacredheartpioneers.com",
+    "conference": "NEC"
+  },
+  {
+    "id": "2603",
+    "name": "Saint Joseph's",
+    "website": "sjuhawks.com",
+    "conference": "A 10"
+  },
+  {
+    "id": "139",
+    "name": "Saint Louis",
+    "website": "slubillikens.com",
+    "conference": "A 10"
+  },
+  {
+    "id": "2608",
+    "name": "Saint Mary's",
+    "website": "SMCGaels.com",
+    "conference": "WCC"
+  },
+  {
+    "id": "2612",
+    "name": "Saint Peter's",
+    "website": "saintpeterspeacocks.com",
+    "conference": "MAAC"
+  },
+  {
+    "id": "2534",
+    "name": "Sam Houston",
+    "website": "gobearkats.com",
+    "conference": "WAC"
+  },
+  {
+    "id": "2535",
+    "name": "Samford",
+    "website": "samfordsports.com",
+    "conference": "Southern"
+  },
+  {
+    "id": "301",
+    "name": "San Diego",
+    "website": "usdtoreros.com",
+    "conference": "WCC"
+  },
+  {
+    "id": "21",
+    "name": "San Diego State",
+    "website": "goaztecs.com",
+    "conference": "Mountain West"
+  },
+  {
+    "id": "2539",
+    "name": "San Francisco",
+    "website": "usfdons.com/index.aspx",
+    "conference": "WCC"
+  },
+  {
+    "id": "23",
+    "name": "San Jos\u00e9 State",
+    "website": "sjsuspartans.com",
+    "conference": "Mountain West"
+  },
+  {
+    "id": "2541",
+    "name": "Santa Clara",
+    "website": "santaclarabroncos.com",
+    "conference": "WCC"
+  },
+  {
+    "id": "2545",
+    "name": "SE Louisiana",
+    "website": "lionsports.net",
+    "conference": "Southland"
+  },
+  {
+    "id": "2547",
+    "name": "Seattle U",
+    "website": "goseattleu.com",
+    "conference": "WAC"
+  },
+  {
+    "id": "2550",
+    "name": "Seton Hall",
+    "website": "shupirates.com",
+    "conference": "Big East"
+  },
+  {
+    "id": "2561",
+    "name": "Siena",
+    "website": "sienasaints.com",
+    "conference": "MAAC"
+  },
+  {
+    "id": "2565",
+    "name": "SIU Edwardsville",
+    "website": "siuecougars.com",
+    "conference": "OVC"
+  },
+  {
+    "id": "6",
+    "name": "South Alabama",
+    "website": "usajaguars.com",
+    "conference": "Sun Belt"
+  },
+  {
+    "id": "2579",
+    "name": "South Carolina",
+    "website": "scsuathletics.com/index.aspx",
+    "conference": "SEC"
+  },
+  {
+    "id": "2569",
+    "name": "South Carolina State",
+    "website": "scsuathletics.com/index.aspx",
+    "conference": "MEAC"
+  },
+  {
+    "id": "2908",
+    "name": "South Carolina Upstate",
+    "website": "upstatespartans.com",
+    "conference": "Big South"
+  },
+  {
+    "id": "233",
+    "name": "South Dakota",
+    "website": "goyotes.com",
+    "conference": "Summit"
+  },
+  {
+    "id": "2571",
+    "name": "South Dakota State",
+    "website": "gojacks.com",
+    "conference": "Summit"
+  },
+  {
+    "id": "58",
+    "name": "South Florida",
+    "website": "gousfbulls.com",
+    "conference": "American"
+  },
+  {
+    "id": "2546",
+    "name": "Southeast Missouri State",
+    "website": "semoredhawks.com",
+    "conference": "OVC"
+  },
+  {
+    "id": "2582",
+    "name": "Southern",
+    "website": "suutbirds.com",
+    "conference": "SWAC"
+  },
+  {
+    "id": "79",
+    "name": "Southern Illinois",
+    "website": "niuhuskies.com",
+    "conference": "MVC"
+  },
+  {
+    "id": "2572",
+    "name": "Southern Miss",
+    "website": "smumustangs.com",
+    "conference": "Sun Belt"
+  },
+  {
+    "id": "253",
+    "name": "Southern Utah",
+    "website": "suutbirds.com",
+    "conference": "WAC"
+  },
+  {
+    "id": "179",
+    "name": "St. Bonaventure",
+    "website": "gobonnies.com",
+    "conference": "A 10"
+  },
+  {
+    "id": "2598",
+    "name": "St. Francis (PA)",
+    "website": "sfuathletics.com",
+    "conference": "NEC"
+  },
+  {
+    "id": "2597",
+    "name": "St. Francis Brooklyn",
+    "website": "stonybrookathletics.com",
+    "conference": "NEC"
+  },
+  {
+    "id": "2599",
+    "name": "St. John's",
+    "website": "redstormsports.com",
+    "conference": "Big East"
+  },
+  {
+    "id": "2900",
+    "name": "St. Thomas - Minnesota",
+    "website": "Tommiesports.com",
+    "conference": "Summit"
+  },
+  {
+    "id": "24",
+    "name": "Stanford",
+    "website": "gostanford.com",
+    "conference": "Pac-12"
+  },
+  {
+    "id": "2617",
+    "name": "Stephen F. Austin",
+    "website": "SFAjacks.com",
+    "conference": "WAC"
+  },
+  {
+    "id": "56",
+    "name": "Stetson",
+    "website": "gohatters.com",
+    "conference": "ASUN"
+  },
+  {
+    "id": "284",
+    "name": "Stonehill",
+    "website": "stonehillskyhawks.com",
+    "conference": "NEC"
+  },
+  {
+    "id": "2619",
+    "name": "Stony Brook",
+    "website": "stonybrookathletics.com",
+    "conference": "CAA"
+  },
+  {
+    "id": "183",
+    "name": "Syracuse",
+    "website": "cuse.com",
+    "conference": "ACC"
+  },
+  {
+    "id": "2627",
+    "name": "Tarleton",
+    "website": "tarletonsports.com",
+    "conference": "WAC"
+  },
+  {
+    "id": "218",
+    "name": "Temple",
+    "website": "owlsports.com",
+    "conference": "American"
+  },
+  {
+    "id": "2633",
+    "name": "Tennessee",
+    "website": "tsutigers.com",
+    "conference": "SEC"
+  },
+  {
+    "id": "2634",
+    "name": "Tennessee State",
+    "website": "tsutigers.com",
+    "conference": "OVC"
+  },
+  {
+    "id": "2635",
+    "name": "Tennessee Tech",
+    "website": "TTUsports.com",
+    "conference": "OVC"
+  },
+  {
+    "id": "251",
+    "name": "Texas",
+    "website": "texastech.com",
+    "conference": "Big 12"
+  },
+  {
+    "id": "245",
+    "name": "Texas A&M",
+    "website": "lionathletics.com",
+    "conference": "SEC"
+  },
+  {
+    "id": "2837",
+    "name": "Texas A&M-Commerce",
+    "website": "lionathletics.com",
+    "conference": "Southland"
+  },
+  {
+    "id": "357",
+    "name": "Texas A&M-Corpus Christi",
+    "website": "goislanders.com",
+    "conference": "Southland"
+  },
+  {
+    "id": "2640",
+    "name": "Texas Southern",
+    "website": "tsusports.com",
+    "conference": "SWAC"
+  },
+  {
+    "id": "326",
+    "name": "Texas State",
+    "website": "txstatebobcats.com",
+    "conference": "Sun Belt"
+  },
+  {
+    "id": "2641",
+    "name": "Texas Tech",
+    "website": "texastech.com",
+    "conference": "Big 12"
+  },
+  {
+    "id": "2643",
+    "name": "The Citadel",
+    "website": "citadelsports.com",
+    "conference": "Southern"
+  },
+  {
+    "id": "2649",
+    "name": "Toledo",
+    "website": "utrockets.com",
+    "conference": "MAC"
+  },
+  {
+    "id": "119",
+    "name": "Towson",
+    "website": "towsontigers.com",
+    "conference": "CAA"
+  },
+  {
+    "id": "2653",
+    "name": "Troy",
+    "website": "troytrojans.com",
+    "conference": "Sun Belt"
+  },
+  {
+    "id": "2655",
+    "name": "Tulane",
+    "website": "tulanegreenwave.com",
+    "conference": "American"
+  },
+  {
+    "id": "202",
+    "name": "Tulsa",
+    "website": "tulanegreenwave.com",
+    "conference": "American"
+  },
+  {
+    "id": "302",
+    "name": "UC Davis",
+    "website": "davidsonwildcats.com",
+    "conference": "Big West"
+  },
+  {
+    "id": "300",
+    "name": "UC Irvine",
+    "website": "ucirvinesports.com",
+    "conference": "Big West"
+  },
+  {
+    "id": "27",
+    "name": "UC Riverside",
+    "website": "cornellbigred.com",
+    "conference": "Big West"
+  },
+  {
+    "id": "28",
+    "name": "UC San Diego",
+    "website": "usdtoreros.com",
+    "conference": "Big West"
+  },
+  {
+    "id": "2540",
+    "name": "UC Santa Barbara",
+    "website": "ucsbgauchos.com",
+    "conference": "Big West"
+  },
+  {
+    "id": "41",
+    "name": "UConn",
+    "website": "cornellbigred.com",
+    "conference": "Big East"
+  },
+  {
+    "id": "2433",
+    "name": "UL Monroe",
+    "website": "lemoynedolphins.com",
+    "conference": "Sun Belt"
+  },
+  {
+    "id": "113",
+    "name": "UMass",
+    "website": "herdzone.com",
+    "conference": "A 10"
+  },
+  {
+    "id": "2349",
+    "name": "UMass Lowell",
+    "website": "goredfoxes.com",
+    "conference": "Am. East"
+  },
+  {
+    "id": "2427",
+    "name": "UNC Asheville",
+    "website": "uncabulldogs.com",
+    "conference": "Big South"
+  },
+  {
+    "id": "2430",
+    "name": "UNC Greensboro",
+    "website": "uncgspartans.com",
+    "conference": "Southern"
+  },
+  {
+    "id": "350",
+    "name": "UNC Wilmington",
+    "website": "uncwsports.com",
+    "conference": "CAA"
+  },
+  {
+    "id": "250",
+    "name": "UT Arlington",
+    "website": "utamavs.com",
+    "conference": "WAC"
+  },
+  {
+    "id": "2630",
+    "name": "UT Martin",
+    "website": "utmsports.com",
+    "conference": "OVC"
+  },
+  {
+    "id": "292",
+    "name": "UT Rio Grande Valley",
+    "website": "goutrgv.com",
+    "conference": "WAC"
+  },
+  {
+    "id": "254",
+    "name": "Utah",
+    "website": "utahutes.com",
+    "conference": "Pac-12"
+  },
+  {
+    "id": "328",
+    "name": "Utah State",
+    "website": "utahstateaggies.com",
+    "conference": "Mountain West"
+  },
+  {
+    "id": "3101",
+    "name": "Utah Tech",
+    "website": "utahtechtrailblazers.com",
+    "conference": "WAC"
+  },
+  {
+    "id": "3084",
+    "name": "Utah Valley",
+    "website": "gouvu.com",
+    "conference": "WAC"
+  },
+  {
+    "id": "2674",
+    "name": "Valparaiso",
+    "website": "valpoathletics.com",
+    "conference": "MVC"
+  },
+  {
+    "id": "238",
+    "name": "Vanderbilt",
+    "website": "vucommodores.com",
+    "conference": "SEC"
+  },
+  {
+    "id": "261",
+    "name": "Vermont",
+    "website": "uvmathletics.com",
+    "conference": "Am. East"
+  },
+  {
+    "id": "222",
+    "name": "Villanova",
+    "website": "villanova.com",
+    "conference": "Big East"
+  },
+  {
+    "id": "258",
+    "name": "Virginia",
+    "website": "virginiasports.com",
+    "conference": "ACC"
+  },
+  {
+    "id": "259",
+    "name": "Virginia Tech",
+    "website": "wvusports.com",
+    "conference": "ACC"
+  },
+  {
+    "id": "2681",
+    "name": "Wagner",
+    "website": "wagnerathletics.com",
+    "conference": "NEC"
+  },
+  {
+    "id": "154",
+    "name": "Wake Forest",
+    "website": "godeacs.com",
+    "conference": "ACC"
+  },
+  {
+    "id": "264",
+    "name": "Washington",
+    "website": "gohuskies.com",
+    "conference": "Pac-12"
+  },
+  {
+    "id": "265",
+    "name": "Washington State",
+    "website": "wsucougars.com",
+    "conference": "Pac-12"
+  },
+  {
+    "id": "2692",
+    "name": "Weber State",
+    "website": "weberstatesports.com",
+    "conference": "Big Sky"
+  },
+  {
+    "id": "277",
+    "name": "West Virginia",
+    "website": "wvusports.com",
+    "conference": "Big 12"
+  },
+  {
+    "id": "2717",
+    "name": "Western Carolina",
+    "website": "catamountsports.com",
+    "conference": "Southern"
+  },
+  {
+    "id": "2710",
+    "name": "Western Illinois",
+    "website": "goleathernecks.com",
+    "conference": "Summit"
+  },
+  {
+    "id": "98",
+    "name": "Western Kentucky",
+    "website": "wkusports.com",
+    "conference": "C-USA"
+  },
+  {
+    "id": "2711",
+    "name": "Western Michigan",
+    "website": "wmubroncos.com",
+    "conference": "MAC"
+  },
+  {
+    "id": "2724",
+    "name": "Wichita State",
+    "website": "goshockers.com",
+    "conference": "American"
+  },
+  {
+    "id": "2729",
+    "name": "William & Mary",
+    "website": "tribeathletics.com",
+    "conference": "CAA"
+  },
+  {
+    "id": "2737",
+    "name": "Winthrop",
+    "website": "winthropeagles.com",
+    "conference": "Big South"
+  },
+  {
+    "id": "275",
+    "name": "Wisconsin",
+    "website": "lipscombsports.com",
+    "conference": "Big Ten"
+  },
+  {
+    "id": "2747",
+    "name": "Wofford",
+    "website": "wofford.edu/athletics",
+    "conference": "Southern"
+  },
+  {
+    "id": "2750",
+    "name": "Wright State",
+    "website": "wsuraiders.com",
+    "conference": "Horizon"
+  },
+  {
+    "id": "2751",
+    "name": "Wyoming",
+    "website": "gowyo.com",
+    "conference": "Mountain West"
+  },
+  {
+    "id": "2752",
+    "name": "Xavier",
+    "website": "goxavier.com",
+    "conference": "Big East"
+  },
+  {
+    "id": "43",
+    "name": "Yale",
+    "website": "yalebulldogs.com",
+    "conference": "Ivy"
+  },
+  {
+    "id": "2754",
+    "name": "Youngstown State",
+    "website": "ysusports.com",
+    "conference": "Horizon"
+  }
+]

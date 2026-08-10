@@ -1,0 +1,35 @@
+{
+  "name": "learfield-scraper",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "bun ./scripts/dev.ts",
+    "build": "vite build",
+    "start": "SERVE_STATIC=1 PORT=3000 bun ./index.ts",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@gurleen-ui/core": "file:../ui/packages/core",
+    "@gurleen-ui/tokens": "file:../ui/packages/tokens",
+    "@huggingface/transformers": "^4.2.0",
+    "cheerio": "^1.0.0",
+    "fflate": "^0.8.3",
+    "react": "file:../ui/node_modules/react",
+    "react-dom": "file:../ui/node_modules/react-dom"
+  },
+  "devDependencies": {
+    "@types/bun": "latest",
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
+    "@vitejs/plugin-react": "^4.3.4",
+    "typescript": "^5.7.2",
+    "vite": "^6.0.3"
+  },
+  "overrides": {
+    "@gurleen-ui/tokens": "file:../ui/packages/tokens",
+    "@gurleen-ui/core": "file:../ui/packages/core",
+    "react": "file:../ui/node_modules/react",
+    "react-dom": "file:../ui/node_modules/react-dom"
+  }
+}
