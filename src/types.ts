@@ -1,6 +1,7 @@
 export type Player = {
   firstName: string;
   lastName: string;
+  fullName: string;
   jerseyNumber: string | null;
   position: string | null;
   academicYear: string | null;

@@ -61,6 +61,7 @@ function parsePlayer(
   return {
     firstName,
     lastName,
+    fullName,
     jerseyNumber: jersey || null,
     position: position || null,
     academicYear: academicYear || null,

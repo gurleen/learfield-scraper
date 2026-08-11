@@ -316,7 +316,7 @@ function AppInner() {
     if (!result) return [];
     return result.players.map((p: Player) => ({
       jersey: p.jerseyNumber ?? "",
-      name: `${p.firstName} ${p.lastName}`.trim(),
+      name: p.fullName,
       position: p.position ?? "",
       year: p.academicYear ?? "",
       hometown: p.hometown ?? "",

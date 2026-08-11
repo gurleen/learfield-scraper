@@ -87,9 +87,12 @@ function mapPlayer(p: SidearmPlayer, origin: string, sportSlug: string): Player 
       ? `${origin}/sports/${sportSlug}/roster/${slugifyName(p.firstName ?? "", p.lastName ?? "")}/${p.rosterPlayerId}`
       : null;
 
+  const firstName = p.firstName ?? "";
+  const lastName = p.lastName ?? "";
   return {
-    firstName: p.firstName ?? "",
-    lastName: p.lastName ?? "",
+    firstName,
+    lastName,
+    fullName: [firstName, lastName].filter(Boolean).join(" ").trim(),
     jerseyNumber: p.jerseyNumber?.trim() || null,
     position: p.positionShort?.trim() || null,
     academicYear: p.academicYearShort?.trim() || null,
