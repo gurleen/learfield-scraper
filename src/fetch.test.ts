@@ -31,7 +31,7 @@ describe("fetchSidearm", () => {
     });
 
     try {
-      const res = await fetchSidearm(url + "/");
+      const res = await fetchSidearm(url + "/", { htmlProxy: false });
       expect(res.status).toBe(200);
       expect(await res.text()).toBe("ok-body");
     } finally {
@@ -44,27 +44,62 @@ describe("fetchSidearm", () => {
       () => new Response("missing", { status: 404 }),
     );
     try {
-      const res = await fetchSidearm(`${url}/api/v2/Sports`);
+      const res = await fetchSidearm(`${url}/api/v2/Sports`, {
+        htmlProxy: false,
+      });
       expect(res.status).toBe(404);
     } finally {
       stop();
     }
   });
 
-  test("throws after too many redirects when the cookie never satisfies", async () => {
+  test("throws after a same-URL redirect loop when the HTML proxy is disabled", async () => {
     const { url, stop } = startServer(
       () =>
         new Response(null, {
-          status: 302,
-          headers: { Location: url + "/" },
+          status: 301,
+          headers: {
+            Location: url + "/",
+            "Set-Cookie": "visid_incap=ok; path=/",
+          },
         }),
     );
     try {
-      await expect(fetchSidearm(url + "/", { maxRedirects: 3 })).rejects.toThrow(
-        /Too many redirects/,
-      );
+      await expect(
+        fetchSidearm(url + "/", { htmlProxy: false, maxRedirects: 8 }),
+      ).rejects.toThrow(/Too many redirects/);
     } finally {
       stop();
+    }
+  });
+
+  test("falls back to the HTML proxy after a same-URL 301 loop", async () => {
+    const blocked = startServer((req) => {
+      const loc = new URL(req.url).href;
+      return new Response(null, {
+        status: 301,
+        headers: {
+          Location: loc,
+          "Set-Cookie": "visid_incap=ok; path=/",
+        },
+      });
+    });
+    const proxy = startServer(
+      () =>
+        new Response("<html><a href='/sports/womens-soccer'>WSOC</a></html>", {
+          status: 200,
+        }),
+    );
+
+    try {
+      const res = await fetchSidearm(blocked.url + "/", {
+        htmlProxy: proxy.url + "/",
+      });
+      expect(res.status).toBe(200);
+      expect(await res.text()).toContain("womens-soccer");
+    } finally {
+      blocked.stop();
+      proxy.stop();
     }
   });
 });
