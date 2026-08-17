@@ -1,16 +1,16 @@
+import {
+  readCachedHtml,
+  writeCachedHtml,
+  type HtmlCacheStore,
+} from "./html-cache";
+
 /** Shared User-Agent for Sidearm / athletics site requests. */
 export const SIDEARM_USER_AGENT =
   "Mozilla/5.0 (compatible; learfield-scraper/0.1; +https://github.com/gurleen/learfield-scraper)";
 
-/**
- * When Cloudflare Worker egress is blocked by Imperva (same-URL 301 loop even
- * after replaying visid_incap), fetch HTML through a reader that retrieves the
- * page from a non-Cloudflare IP.
- */
-export const DEFAULT_HTML_PROXY = "https://r.jina.ai/";
-
 const MAX_REDIRECTS = 20;
 const SAME_URL_REDIRECT_LIMIT = 2;
+const BROWSER_GOTO_TIMEOUT_MS = 25_000;
 
 type StoredCookie = {
   name: string;
@@ -19,11 +19,29 @@ type StoredCookie = {
   hostOnly: boolean;
 };
 
+export type BrowserContentBinding = {
+  quickAction(
+    action: "content",
+    options: {
+      url: string;
+      gotoOptions?: { waitUntil?: string; timeout?: number };
+    },
+  ): Promise<Response>;
+};
+
+export type FetchSidearmEnv = {
+  MODELS?: HtmlCacheStore;
+  BROWSER?: BrowserContentBinding;
+};
+
 export type FetchSidearmInit = RequestInit & {
   maxRedirects?: number;
-  /** Reader prefix, or `false` to disable the Imperva fallback. */
-  htmlProxy?: string | false;
+  env?: FetchSidearmEnv;
+  /** When false, do not use R2/browser after a same-URL 301 loop. */
+  htmlFallback?: boolean;
 };
+
+type DirectInit = RequestInit & { maxRedirects?: number };
 
 function setCookieHeaders(headers: Headers): string[] {
   if (typeof headers.getSetCookie === "function") {
@@ -81,36 +99,73 @@ function isRedirectLoopError(err: unknown): boolean {
   return /too many redirects/i.test(message);
 }
 
-async function fetchViaHtmlProxy(
-  url: string,
-  proxyPrefix: string,
-  signal: AbortSignal | null | undefined,
-): Promise<Response> {
-  const prefix = proxyPrefix.endsWith("/") ? proxyPrefix : `${proxyPrefix}/`;
-  const res = await fetch(`${prefix}${url}`, {
-    headers: {
-      "User-Agent": SIDEARM_USER_AGENT,
-      "X-Return-Format": "html",
-      Accept: "text/html,text/plain,*/*",
-    },
-    signal: signal ?? undefined,
-    redirect: "follow",
-  });
-  if (!res.ok) {
-    throw new Error(
-      `Athletics site blocked Worker fetch; HTML proxy failed (${res.status})`,
-    );
-  }
-  const html = await res.text();
+function wantsJson(headers: HeadersInit | undefined): boolean {
+  return new Headers(headers).get("Accept")?.includes("application/json") ?? false;
+}
+
+function htmlResponse(html: string): Response {
   return new Response(html, {
     status: 200,
     headers: { "content-type": "text/html; charset=utf-8" },
   });
 }
 
+async function renderWithBrowser(
+  browser: BrowserContentBinding,
+  url: string,
+): Promise<string> {
+  const response = await browser.quickAction("content", {
+    url,
+    gotoOptions: {
+      waitUntil: "networkidle2",
+      timeout: BROWSER_GOTO_TIMEOUT_MS,
+    },
+  });
+  const payload = (await response.json()) as {
+    success?: boolean;
+    result?: string;
+    errors?: { message?: string }[];
+  };
+  if (!response.ok || payload.success === false) {
+    const detail = payload.errors?.[0]?.message;
+    throw new Error(
+      `Browser Rendering failed (${response.status})${detail ? `: ${detail}` : ""}`,
+    );
+  }
+  if (typeof payload.result !== "string" || !payload.result) {
+    throw new Error("Browser Rendering returned no HTML");
+  }
+  return payload.result;
+}
+
+async function fetchViaBrowserOrCache(
+  url: string,
+  env: FetchSidearmEnv | undefined,
+  blockedReason: string,
+): Promise<Response> {
+  const cached = await readCachedHtml(env?.MODELS, url);
+  if (cached != null) {
+    return htmlResponse(cached);
+  }
+
+  if (!env?.BROWSER) {
+    throw new Error(
+      `Athletics site blocked Worker fetch; Browser Rendering is not configured (${blockedReason})`,
+    );
+  }
+
+  const html = await renderWithBrowser(env.BROWSER, url);
+  try {
+    await writeCachedHtml(env.MODELS, url, html);
+  } catch {
+    /* cache write is best-effort */
+  }
+  return htmlResponse(html);
+}
+
 async function fetchDirectWithCookies(
   url: string,
-  init: FetchSidearmInit,
+  init: DirectInit,
 ): Promise<{ res: Response } | { blocked: true; hops: string[] }> {
   const { maxRedirects = MAX_REDIRECTS, headers: initHeaders, ...rest } = init;
   const headers = new Headers(initHeaders);
@@ -199,30 +254,38 @@ async function fetchDirectWithCookies(
  * Cloudflare Workers have no cookie jar, so Imperva's visid_incap 301 would
  * otherwise loop. Replaying cookies is enough for some hosts; from Cloudflare
  * egress IPs, Imperva often keeps 301ing to the same URL anyway. In that case
- * (and on "Too many redirects"), fall back to DEFAULT_HTML_PROXY.
+ * (and on "Too many redirects"), load HTML from the R2 cache or Browser Run.
+ *
+ * JSON API requests (`Accept: application/json`) never use the HTML fallback.
  */
 export async function fetchSidearm(
   url: string,
   init: FetchSidearmInit = {},
 ): Promise<Response> {
-  const { htmlProxy = DEFAULT_HTML_PROXY, ...rest } = init;
+  const { env, htmlFallback = true, maxRedirects, ...fetchInit } = init;
+  const directInit: DirectInit = { ...fetchInit, maxRedirects };
+  const jsonRequest = wantsJson(fetchInit.headers);
 
-  const tryProxy = async (reason: string): Promise<Response> => {
-    if (htmlProxy === false) {
+  const fallback = async (reason: string): Promise<Response> => {
+    if (!htmlFallback || jsonRequest) {
       throw new Error(reason);
     }
-    return fetchViaHtmlProxy(url, htmlProxy, rest.signal);
+    return fetchViaBrowserOrCache(url, env, reason);
   };
 
   try {
-    const outcome = await fetchDirectWithCookies(url, rest);
+    const outcome = await fetchDirectWithCookies(url, directInit);
     if ("res" in outcome) {
       return outcome.res;
     }
-    return tryProxy(`Too many redirects: ${outcome.hops.join(", ")}`);
+    return fallback(`Too many redirects: ${outcome.hops.join(", ")}`);
   } catch (err) {
-    if (htmlProxy !== false && isRedirectLoopError(err)) {
-      return fetchViaHtmlProxy(url, htmlProxy, rest.signal);
+    if (htmlFallback && !jsonRequest && isRedirectLoopError(err)) {
+      return fetchViaBrowserOrCache(
+        url,
+        env,
+        err instanceof Error ? err.message : String(err),
+      );
     }
     throw err;
   }
