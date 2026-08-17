@@ -48,6 +48,47 @@ function withFallback(sports: SportOption[]): SportOption[] {
   return [FALLBACK_SPORT];
 }
 
+/** Sidearm interstitial (tickets, season launch) — not a sports nav page. */
+export function isAthleticsSplashUrl(url: string): boolean {
+  try {
+    return /\/splash\.aspx$/i.test(new URL(url).pathname);
+  } catch {
+    return /splash\.aspx/i.test(url);
+  }
+}
+
+/**
+ * Collect roster sports from Classic Sidearm HTML.
+ * Matches `/sports/{slug}` and `/sports/{slug}/roster` nav links.
+ */
+export function collectClassicSports(
+  html: string,
+  origin: string,
+): SportOption[] {
+  const $ = cheerio.load(html);
+  const bySlug = new Map<string, SportOption>();
+
+  $("a[href]").each((_, el) => {
+    const href = $(el).attr("href");
+    if (!href) return;
+    let pathname: string;
+    try {
+      pathname = new URL(href, origin).pathname;
+    } catch {
+      return;
+    }
+    const match = pathname.match(
+      /^\/sports\/([a-z0-9-]+)(?:\/roster)?\/?$/i,
+    );
+    if (!match) return;
+    const slug = match[1]!.toLowerCase();
+    if (bySlug.has(slug)) return;
+    bySlug.set(slug, { slug, title: titleFromSlug(slug) });
+  });
+
+  return sortSports([...bySlug.values()]);
+}
+
 async function listNextGenSports(
   origin: string,
   env?: FetchSidearmEnv,
@@ -82,7 +123,7 @@ async function listNextGenSports(
   }
 }
 
-async function listClassicSports(
+export async function listClassicSports(
   origin: string,
   env?: FetchSidearmEnv,
 ): Promise<SportOption[]> {
@@ -90,9 +131,9 @@ async function listClassicSports(
     `${origin}/`,
     `${origin}/sports/${DEFAULT_SPORT_SLUG}/roster`,
   ];
-  let html: string | null = null;
   let lastStatus = 0;
   let lastError: unknown;
+  let fetchedOk = false;
 
   for (const url of candidates) {
     try {
@@ -102,16 +143,24 @@ async function listClassicSports(
         signal: AbortSignal.timeout(20_000),
       });
       lastStatus = res.status;
-      if (res.ok) {
-        html = await res.text();
-        break;
+      if (!res.ok) continue;
+      fetchedOk = true;
+      if (res.url && isAthleticsSplashUrl(res.url)) {
+        try {
+          await res.body?.cancel();
+        } catch {
+          /* ignore */
+        }
+        continue;
       }
+      const found = collectClassicSports(await res.text(), origin);
+      if (found.length > 0) return found;
     } catch (err) {
       lastError = err;
     }
   }
 
-  if (!html) {
+  if (!fetchedOk) {
     const detail =
       lastError instanceof Error
         ? lastError.message
@@ -121,26 +170,7 @@ async function listClassicSports(
     throw new Error(`Failed to fetch athletics site (${detail})`);
   }
 
-  const $ = cheerio.load(html);
-  const bySlug = new Map<string, SportOption>();
-
-  $("a[href]").each((_, el) => {
-    const href = $(el).attr("href");
-    if (!href) return;
-    let pathname: string;
-    try {
-      pathname = new URL(href, origin).pathname;
-    } catch {
-      return;
-    }
-    const match = pathname.match(/^\/sports\/([a-z0-9-]+)\/?$/i);
-    if (!match) return;
-    const slug = match[1]!.toLowerCase();
-    if (bySlug.has(slug)) return;
-    bySlug.set(slug, { slug, title: titleFromSlug(slug) });
-  });
-
-  return sortSports([...bySlug.values()]);
+  return [];
 }
 
 /** List sports with rosters for a Sidearm athletics site. */
