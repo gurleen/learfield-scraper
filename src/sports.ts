@@ -1,4 +1,5 @@
 import * as cheerio from "cheerio";
+import { fetchSidearm, SIDEARM_USER_AGENT } from "./fetch";
 import {
   DEFAULT_SPORT_SLUG,
   originFromWebsite,
@@ -17,8 +18,7 @@ type SidearmSport = {
 };
 
 const FETCH_HEADERS = {
-  "User-Agent":
-    "Mozilla/5.0 (compatible; learfield-scraper/0.1; +https://github.com/gurleen/learfield-scraper)",
+  "User-Agent": SIDEARM_USER_AGENT,
 };
 
 const FALLBACK_SPORT: SportOption = {
@@ -50,7 +50,7 @@ function withFallback(sports: SportOption[]): SportOption[] {
 
 async function listNextGenSports(origin: string): Promise<SportOption[] | null> {
   try {
-    const res = await fetch(`${origin}/api/v2/Sports`, {
+    const res = await fetchSidearm(`${origin}/api/v2/Sports`, {
       headers: {
         ...FETCH_HEADERS,
         Accept: "application/json",
@@ -80,21 +80,25 @@ async function listNextGenSports(origin: string): Promise<SportOption[] | null> 
 
 async function listClassicSports(origin: string): Promise<SportOption[]> {
   const candidates = [
-    origin,
+    `${origin}/`,
     `${origin}/sports/${DEFAULT_SPORT_SLUG}/roster`,
   ];
   let html: string | null = null;
   let lastStatus = 0;
 
   for (const url of candidates) {
-    const res = await fetch(url, {
-      headers: FETCH_HEADERS,
-      signal: AbortSignal.timeout(20_000),
-    });
-    lastStatus = res.status;
-    if (res.ok) {
-      html = await res.text();
-      break;
+    try {
+      const res = await fetchSidearm(url, {
+        headers: FETCH_HEADERS,
+        signal: AbortSignal.timeout(20_000),
+      });
+      lastStatus = res.status;
+      if (res.ok) {
+        html = await res.text();
+        break;
+      }
+    } catch {
+      lastStatus = 0;
     }
   }
 

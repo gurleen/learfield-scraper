@@ -1,3 +1,4 @@
+import { fetchSidearm, SIDEARM_USER_AGENT } from "../fetch";
 import { resolveOriginalImageUrl } from "../images";
 import type { Coach, Player, RosterResult } from "../types";
 import { parseRosterUrl } from "../types";
@@ -52,8 +53,7 @@ type RostersListResponse = {
 
 const FETCH_HEADERS = {
   Accept: "application/json",
-  "User-Agent":
-    "Mozilla/5.0 (compatible; learfield-scraper/0.1; +https://github.com/gurleen/learfield-scraper)",
+  "User-Agent": SIDEARM_USER_AGENT,
 };
 
 function formatHeight(feet: number | null | undefined, inches: number | null | undefined): string | null {
@@ -118,7 +118,7 @@ function mapCoach(c: SidearmCoach, origin: string): Coach {
 }
 
 async function fetchJson<T>(url: string): Promise<T> {
-  const res = await fetch(url, { headers: FETCH_HEADERS });
+  const res = await fetchSidearm(url, { headers: FETCH_HEADERS });
   if (!res.ok) {
     throw new Error(`NextGen API failed (${res.status}): ${url}`);
   }
@@ -164,7 +164,7 @@ export async function scrapeNextGen(rosterUrl: string): Promise<RosterResult> {
 
 export async function isNextGen(origin: string): Promise<boolean> {
   try {
-    const res = await fetch(`${origin}/api/v2/Sports`, {
+    const res = await fetchSidearm(`${origin}/api/v2/Sports`, {
       headers: FETCH_HEADERS,
       signal: AbortSignal.timeout(15_000),
     });

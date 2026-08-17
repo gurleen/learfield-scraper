@@ -1,12 +1,12 @@
 import * as cheerio from "cheerio";
 import type { Element } from "domhandler";
+import { fetchSidearm, SIDEARM_USER_AGENT } from "../fetch";
 import { resolveOriginalImageUrl } from "../images";
 import type { Coach, Player, RosterResult } from "../types";
 import { parseRosterUrl } from "../types";
 
 const FETCH_HEADERS = {
-  "User-Agent":
-    "Mozilla/5.0 (compatible; learfield-scraper/0.1; +https://github.com/gurleen/learfield-scraper)",
+  "User-Agent": SIDEARM_USER_AGENT,
 };
 
 function text($el: cheerio.Cheerio<Element>): string {
@@ -94,7 +94,7 @@ function parseCoach($: cheerio.CheerioAPI, el: Element, origin: string): Coach {
 export async function scrapeClassic(rosterUrl: string): Promise<RosterResult> {
   const { origin, sportSlug, normalizedUrl } = parseRosterUrl(rosterUrl);
 
-  const res = await fetch(normalizedUrl, { headers: FETCH_HEADERS });
+  const res = await fetchSidearm(normalizedUrl, { headers: FETCH_HEADERS });
   if (!res.ok) {
     throw new Error(`Failed to fetch roster page (${res.status})`);
   }

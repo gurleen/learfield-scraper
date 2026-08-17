@@ -1,5 +1,6 @@
 import { isNextGen, scrapeNextGen } from "./adapters/nextgen";
 import { htmlLooksClassic, scrapeClassic } from "./adapters/classic";
+import { fetchSidearm, SIDEARM_USER_AGENT } from "./fetch";
 import type { RosterResult } from "./types";
 import { parseRosterUrl } from "./types";
 
@@ -11,10 +12,9 @@ export async function scrapeRoster(rosterUrl: string): Promise<RosterResult> {
   }
 
   const { normalizedUrl } = parseRosterUrl(rosterUrl);
-  const res = await fetch(normalizedUrl, {
+  const res = await fetchSidearm(normalizedUrl, {
     headers: {
-      "User-Agent":
-        "Mozilla/5.0 (compatible; learfield-scraper/0.1; +https://github.com/gurleen/learfield-scraper)",
+      "User-Agent": SIDEARM_USER_AGENT,
     },
   });
   if (!res.ok) {
