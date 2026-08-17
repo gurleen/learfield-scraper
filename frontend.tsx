@@ -1,4 +1,4 @@
-import "@gurleen-ui/tokens";
+import "@hydra-tv/tokens";
 import {
   Button,
   Checkbox,
@@ -13,7 +13,7 @@ import {
   Tabs,
   ToastProvider,
   useToast,
-} from "@gurleen-ui/core";
+} from "@hydra-tv/ui";
 import { unzipSync, zipSync } from "fflate";
 import { createRoot } from "react-dom/client";
 import { useCallback, useEffect, useMemo, useState } from "react";

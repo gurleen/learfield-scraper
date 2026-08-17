@@ -1,6 +1,6 @@
 # Sidearm Roster Scraper
 
-Bun + TypeScript app that scrapes **Sidearm Sports** roster pages (NextGen JSON API or Classic HTML), normalizes player and coach data with original headshot URLs, and exposes a small web UI built with [`@gurleen-ui`](https://github.com/gurleen/ui).
+Bun + TypeScript app that scrapes **Sidearm Sports** roster pages (NextGen JSON API or Classic HTML), normalizes player and coach data with original headshot URLs, and exposes a small web UI built with [`@hydra-tv/ui`](https://www.npmjs.com/package/@hydra-tv/ui).
 
 ## Quick start
 
@@ -36,9 +36,4 @@ Headshot URLs are resolved to originals when served through `images.sidearmdev.c
 
 ## UI dependency
 
-`@gurleen-ui/core` and `@gurleen-ui/tokens` are linked from `../ui/packages/*`. React / React DOM are the **same copies** as the UI monorepo (`file:../ui/node_modules/react`) so Vite does not resolve two Reacts (which breaks hooks).
-
-```sh
-cd ../ui && npm install && npm run build   # once, if needed
-cd ../learfield-scraper && bun install && bun run dev
-```
+The UI is [`@hydra-tv/ui`](https://www.npmjs.com/package/@hydra-tv/ui) with tokens from [`@hydra-tv/tokens`](https://www.npmjs.com/package/@hydra-tv/tokens), both installed from npm. Vite `dedupe`s `react` / `react-dom` so the app and the library share one React (duplicate copies break hooks).
