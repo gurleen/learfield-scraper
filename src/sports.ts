@@ -1,5 +1,5 @@
 import * as cheerio from "cheerio";
-import { fetchSidearm, SIDEARM_USER_AGENT } from "./fetch";
+import { fetchSidearm, SIDEARM_USER_AGENT, type FetchSidearmEnv } from "./fetch";
 import {
   DEFAULT_SPORT_SLUG,
   originFromWebsite,
@@ -48,9 +48,13 @@ function withFallback(sports: SportOption[]): SportOption[] {
   return [FALLBACK_SPORT];
 }
 
-async function listNextGenSports(origin: string): Promise<SportOption[] | null> {
+async function listNextGenSports(
+  origin: string,
+  env?: FetchSidearmEnv,
+): Promise<SportOption[] | null> {
   try {
     const res = await fetchSidearm(`${origin}/api/v2/Sports`, {
+      env,
       headers: {
         ...FETCH_HEADERS,
         Accept: "application/json",
@@ -78,7 +82,10 @@ async function listNextGenSports(origin: string): Promise<SportOption[] | null> 
   }
 }
 
-async function listClassicSports(origin: string): Promise<SportOption[]> {
+async function listClassicSports(
+  origin: string,
+  env?: FetchSidearmEnv,
+): Promise<SportOption[]> {
   const candidates = [
     `${origin}/`,
     `${origin}/sports/${DEFAULT_SPORT_SLUG}/roster`,
@@ -90,6 +97,7 @@ async function listClassicSports(origin: string): Promise<SportOption[]> {
   for (const url of candidates) {
     try {
       const res = await fetchSidearm(url, {
+        env,
         headers: FETCH_HEADERS,
         signal: AbortSignal.timeout(20_000),
       });
@@ -136,14 +144,17 @@ async function listClassicSports(origin: string): Promise<SportOption[]> {
 }
 
 /** List sports with rosters for a Sidearm athletics site. */
-export async function listSports(website: string): Promise<SportOption[]> {
+export async function listSports(
+  website: string,
+  env?: FetchSidearmEnv,
+): Promise<SportOption[]> {
   const origin = originFromWebsite(website);
-  const nextGen = await listNextGenSports(origin);
+  const nextGen = await listNextGenSports(origin, env);
   if (nextGen && nextGen.length > 0) {
     return nextGen;
   }
   try {
-    return withFallback(await listClassicSports(origin));
+    return withFallback(await listClassicSports(origin, env));
   } catch (err) {
     if (nextGen) return withFallback(nextGen);
     throw err;

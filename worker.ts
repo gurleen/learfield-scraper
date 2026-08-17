@@ -1,4 +1,5 @@
 import { handleApi } from "./src/api";
+import { publicModelKey } from "./src/models";
 
 const MODEL_CACHE = "public, max-age=31536000, immutable";
 
@@ -13,8 +14,8 @@ async function serveModel(
   env: Env,
   pathname: string,
 ): Promise<Response> {
-  const key = pathname.replace(/^\/models\//, "");
-  if (!key || key.includes("..")) {
+  const key = publicModelKey(pathname);
+  if (!key) {
     return new Response("Not Found", { status: 404 });
   }
 
@@ -62,7 +63,7 @@ export default {
       return serveModel(request, env, pathname);
     }
 
-    const api = handleApi(request);
+    const api = handleApi(request, env);
     if (api) return api;
 
     return new Response("Not Found", { status: 404 });
