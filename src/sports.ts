@@ -85,6 +85,7 @@ async function listClassicSports(origin: string): Promise<SportOption[]> {
   ];
   let html: string | null = null;
   let lastStatus = 0;
+  let lastError: unknown;
 
   for (const url of candidates) {
     try {
@@ -97,13 +98,19 @@ async function listClassicSports(origin: string): Promise<SportOption[]> {
         html = await res.text();
         break;
       }
-    } catch {
-      lastStatus = 0;
+    } catch (err) {
+      lastError = err;
     }
   }
 
   if (!html) {
-    throw new Error(`Failed to fetch athletics site (${lastStatus})`);
+    const detail =
+      lastError instanceof Error
+        ? lastError.message
+        : lastStatus
+          ? `HTTP ${lastStatus}`
+          : "no response";
+    throw new Error(`Failed to fetch athletics site (${detail})`);
   }
 
   const $ = cheerio.load(html);

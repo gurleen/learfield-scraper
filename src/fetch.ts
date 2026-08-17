@@ -2,7 +2,15 @@
 export const SIDEARM_USER_AGENT =
   "Mozilla/5.0 (compatible; learfield-scraper/0.1; +https://github.com/gurleen/learfield-scraper)";
 
+/**
+ * When Cloudflare Worker egress is blocked by Imperva (same-URL 301 loop even
+ * after replaying visid_incap), fetch HTML through a reader that retrieves the
+ * page from a non-Cloudflare IP.
+ */
+export const DEFAULT_HTML_PROXY = "https://r.jina.ai/";
+
 const MAX_REDIRECTS = 20;
+const SAME_URL_REDIRECT_LIMIT = 2;
 
 type StoredCookie = {
   name: string;
@@ -13,6 +21,8 @@ type StoredCookie = {
 
 export type FetchSidearmInit = RequestInit & {
   maxRedirects?: number;
+  /** Reader prefix, or `false` to disable the Imperva fallback. */
+  htmlProxy?: string | false;
 };
 
 function setCookieHeaders(headers: Headers): string[] {
@@ -66,18 +76,42 @@ function isRedirect(status: number): boolean {
   );
 }
 
-/**
- * fetch() that follows redirects and forwards Set-Cookie as Cookie on later hops.
- *
- * Cloudflare Workers (and some other runtimes) follow redirects without a cookie
- * jar. Imperva/Incapsula on Classic Sidearm sites 302s to the same URL after
- * setting visid_incap; without replaying that cookie, fetch loops until
- * "Too many redirects".
- */
-export async function fetchSidearm(
+function isRedirectLoopError(err: unknown): boolean {
+  const message = err instanceof Error ? err.message : String(err);
+  return /too many redirects/i.test(message);
+}
+
+async function fetchViaHtmlProxy(
   url: string,
-  init: FetchSidearmInit = {},
+  proxyPrefix: string,
+  signal: AbortSignal | null | undefined,
 ): Promise<Response> {
+  const prefix = proxyPrefix.endsWith("/") ? proxyPrefix : `${proxyPrefix}/`;
+  const res = await fetch(`${prefix}${url}`, {
+    headers: {
+      "User-Agent": SIDEARM_USER_AGENT,
+      "X-Return-Format": "html",
+      Accept: "text/html,text/plain,*/*",
+    },
+    signal: signal ?? undefined,
+    redirect: "follow",
+  });
+  if (!res.ok) {
+    throw new Error(
+      `Athletics site blocked Worker fetch; HTML proxy failed (${res.status})`,
+    );
+  }
+  const html = await res.text();
+  return new Response(html, {
+    status: 200,
+    headers: { "content-type": "text/html; charset=utf-8" },
+  });
+}
+
+async function fetchDirectWithCookies(
+  url: string,
+  init: FetchSidearmInit,
+): Promise<{ res: Response } | { blocked: true; hops: string[] }> {
   const { maxRedirects = MAX_REDIRECTS, headers: initHeaders, ...rest } = init;
   const headers = new Headers(initHeaders);
   if (!headers.has("User-Agent")) {
@@ -87,6 +121,7 @@ export async function fetchSidearm(
   const jar: StoredCookie[] = [];
   let current = url;
   const hops: string[] = [];
+  let sameUrlRedirects = 0;
 
   for (let hop = 0; hop <= maxRedirects; hop++) {
     hops.push(current);
@@ -122,11 +157,11 @@ export async function fetchSidearm(
     }
 
     if (!isRedirect(res.status)) {
-      return res;
+      return { res };
     }
 
     const location = res.headers.get("location");
-    if (!location) return res;
+    if (!location) return { res };
     try {
       await res.body?.cancel();
     } catch {
@@ -137,13 +172,58 @@ export async function fetchSidearm(
     try {
       next = new URL(location, current);
     } catch {
-      return res;
+      return { res };
     }
     if (next.protocol !== "http:" && next.protocol !== "https:") {
-      return res;
+      return { res };
     }
+
+    if (next.href === current) {
+      sameUrlRedirects += 1;
+      if (sameUrlRedirects >= SAME_URL_REDIRECT_LIMIT) {
+        return { blocked: true, hops };
+      }
+    } else {
+      sameUrlRedirects = 0;
+    }
+
     current = next.href;
   }
 
-  throw new Error(`Too many redirects: ${hops.join(", ")}`);
+  return { blocked: true, hops };
+}
+
+/**
+ * Fetch a Sidearm URL, following redirects and replaying Set-Cookie.
+ *
+ * Cloudflare Workers have no cookie jar, so Imperva's visid_incap 301 would
+ * otherwise loop. Replaying cookies is enough for some hosts; from Cloudflare
+ * egress IPs, Imperva often keeps 301ing to the same URL anyway. In that case
+ * (and on "Too many redirects"), fall back to DEFAULT_HTML_PROXY.
+ */
+export async function fetchSidearm(
+  url: string,
+  init: FetchSidearmInit = {},
+): Promise<Response> {
+  const { htmlProxy = DEFAULT_HTML_PROXY, ...rest } = init;
+
+  const tryProxy = async (reason: string): Promise<Response> => {
+    if (htmlProxy === false) {
+      throw new Error(reason);
+    }
+    return fetchViaHtmlProxy(url, htmlProxy, rest.signal);
+  };
+
+  try {
+    const outcome = await fetchDirectWithCookies(url, rest);
+    if ("res" in outcome) {
+      return outcome.res;
+    }
+    return tryProxy(`Too many redirects: ${outcome.hops.join(", ")}`);
+  } catch (err) {
+    if (htmlProxy !== false && isRedirectLoopError(err)) {
+      return fetchViaHtmlProxy(url, htmlProxy, rest.signal);
+    }
+    throw err;
+  }
 }
