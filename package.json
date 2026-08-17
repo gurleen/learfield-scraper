@@ -14,13 +14,13 @@
     "upload-rmbg-model": "bun ./scripts/upload-rmbg-model.ts"
   },
   "dependencies": {
-    "@gurleen-ui/core": "file:../ui/packages/core",
-    "@gurleen-ui/tokens": "file:../ui/packages/tokens",
+    "@hydra-tv/tokens": "0.2.0",
+    "@hydra-tv/ui": "0.2.0",
     "@huggingface/transformers": "^4.2.0",
     "cheerio": "^1.0.0",
     "fflate": "^0.8.3",
-    "react": "file:../ui/node_modules/react",
-    "react-dom": "file:../ui/node_modules/react-dom"
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
   },
   "devDependencies": {
     "@cloudflare/workers-types": "^4.20250810.0",
@@ -31,11 +31,5 @@
     "typescript": "^5.7.2",
     "vite": "^6.0.3",
     "wrangler": "^4.120.1"
-  },
-  "overrides": {
-    "@gurleen-ui/tokens": "file:../ui/packages/tokens",
-    "@gurleen-ui/core": "file:../ui/packages/core",
-    "react": "file:../ui/node_modules/react",
-    "react-dom": "file:../ui/node_modules/react-dom"
   }
 }
