@@ -64,7 +64,7 @@ Use **Bun**, not Node/npm, for app scripts.
 
 - Components from `@hydra-tv/ui` + tokens from `@hydra-tv/tokens` (published on npm).
 - **One React only.** Vite `dedupe`s `react` / `react-dom`. Do not add a second React; duplicate React breaks hooks (`useState` null).
-- Prefer `@hydra-tv/ui` (`Button`, `Input`, `Select`, `DataGrid`, `Panel`, …) over ad-hoc controls.
+- Prefer `@hydra-tv/ui` (`Button`, `Input`, `Combobox`, `DataGrid`, `Panel`, …) over ad-hoc controls.
 
 ## When changing scrapers
 
