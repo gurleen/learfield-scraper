@@ -59,14 +59,15 @@ export function isAthleticsSplashUrl(url: string): boolean {
 
 /**
  * Collect roster sports from Classic Sidearm HTML.
- * Matches `/sports/{slug}` and `/sports/{slug}/roster` nav links.
+ * Prefers `/sports/{slug}/roster` links; otherwise uses `/sports/{slug}`.
  */
 export function collectClassicSports(
   html: string,
   origin: string,
 ): SportOption[] {
   const $ = cheerio.load(html);
-  const bySlug = new Map<string, SportOption>();
+  const indexSlugs = new Set<string>();
+  const rosterSlugs = new Set<string>();
 
   $("a[href]").each((_, el) => {
     const href = $(el).attr("href");
@@ -77,16 +78,21 @@ export function collectClassicSports(
     } catch {
       return;
     }
-    const match = pathname.match(
-      /^\/sports\/([a-z0-9-]+)(?:\/roster)?\/?$/i,
-    );
-    if (!match) return;
-    const slug = match[1]!.toLowerCase();
-    if (bySlug.has(slug)) return;
-    bySlug.set(slug, { slug, title: titleFromSlug(slug) });
+    const roster = pathname.match(/^\/sports\/([a-z0-9-]+)\/roster\/?$/i);
+    if (roster) {
+      rosterSlugs.add(roster[1]!.toLowerCase());
+      return;
+    }
+    const index = pathname.match(/^\/sports\/([a-z0-9-]+)\/?$/i);
+    if (index) indexSlugs.add(index[1]!.toLowerCase());
   });
 
-  return sortSports([...bySlug.values()]);
+  // Roster links are the real sport slugs; index-only hrefs can be truncated
+  // (Wagner's `/sports/flagf`) or non-roster clubs (dance, band).
+  const slugs = rosterSlugs.size > 0 ? rosterSlugs : indexSlugs;
+  return sortSports(
+    [...slugs].map((slug) => ({ slug, title: titleFromSlug(slug) })),
+  );
 }
 
 async function listNextGenSports(

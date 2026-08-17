@@ -44,11 +44,13 @@ describe("collectClassicSports", () => {
     ).toEqual([]);
   });
 
-  test("collects index and roster nav links", () => {
+  test("prefers /roster hrefs when the page has them", () => {
     const html = `
       <nav>
         <a href="/sports/baseball">Baseball</a>
+        <a href="/sports/flagf">Flagf</a>
         <a href="/sports/football/roster">Football</a>
+        <a href="/sports/womens-flag-football/roster">Flag Football</a>
         <a href="/sports/womens-soccer/roster">WSOC</a>
         <a href="/sports/2015/8/18/SASS.aspx">SASS</a>
         <a href="/admissions">Ignore</a>
@@ -56,7 +58,19 @@ describe("collectClassicSports", () => {
     `;
     expect(
       collectClassicSports(html, "https://wagnerathletics.com").map((s) => s.slug),
-    ).toEqual(["baseball", "football", "womens-soccer"]);
+    ).toEqual(["football", "womens-flag-football", "womens-soccer"]);
+  });
+
+  test("falls back to /sports/{slug} index links when no roster hrefs exist", () => {
+    const html = `
+      <nav>
+        <a href="/sports/baseball">Baseball</a>
+        <a href="/sports/womens-soccer">WSOC</a>
+      </nav>
+    `;
+    expect(
+      collectClassicSports(html, "https://wagnerathletics.com").map((s) => s.slug),
+    ).toEqual(["baseball", "womens-soccer"]);
   });
 });
 
