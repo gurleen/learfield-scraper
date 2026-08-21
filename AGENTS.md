@@ -37,11 +37,11 @@ Shared shape: `RosterResult` / `Player` / `Coach` in `src/types.ts`. Missing fie
 
 | Path | Role |
 |------|------|
-| `frontend.tsx` | React UI (`@gurleen-ui`) |
+| `frontend.tsx` | React UI (`@hydra-tv/ui`) |
 | `index.html` | Vite entry |
 | `index.ts` | Bun API (+ production static from `dist/`) |
 | `scripts/dev.ts` | Spawns Bun API + Vite |
-| `vite.config.ts` | Vite, React aliases, `/api` proxy |
+| `vite.config.ts` | Vite, React dedupe, `/api` proxy |
 | `src/scrape.ts` | Orchestrator + platform detect |
 | `src/adapters/nextgen.ts` | JSON API adapter |
 | `src/adapters/classic.ts` | HTML adapter |
@@ -58,13 +58,13 @@ bun run build    # vite build → dist/
 bun run start    # API + dist on :3000
 ```
 
-Use **Bun**, not Node/npm, for app scripts. UI library lives in sibling `../ui`.
+Use **Bun**, not Node/npm, for app scripts.
 
 ## UI stack rules
 
-- Components from `@gurleen-ui/core` + tokens from `@gurleen-ui/tokens` (linked via `file:../ui/packages/*`).
-- **One React only.** Vite aliases `react` / `react-dom` to `../ui/node_modules/react*`. Do not add a second React; duplicate React breaks hooks (`useState` null).
-- Prefer `@gurleen-ui/core` (`Button`, `Input`, `Select`, `DataGrid`, `Panel`, …) over ad-hoc controls.
+- Components from `@hydra-tv/ui` + tokens from `@hydra-tv/tokens` (published on npm).
+- **One React only.** Vite `dedupe`s `react` / `react-dom`. Do not add a second React; duplicate React breaks hooks (`useState` null).
+- Prefer `@hydra-tv/ui` (`Button`, `Input`, `Combobox`, `DataGrid`, `Panel`, …) over ad-hoc controls.
 
 ## When changing scrapers
 

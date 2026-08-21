@@ -1,19 +1,19 @@
-import "@gurleen-ui/tokens";
+import "@hydra-tv/tokens";
 import {
   Button,
   Checkbox,
+  Combobox,
   DataGrid,
   Dialog,
   Input,
   NavBar,
   Panel,
   ProgressBar,
-  Select,
   Spinner,
   Tabs,
   ToastProvider,
   useToast,
-} from "@gurleen-ui/core";
+} from "@hydra-tv/ui";
 import { unzipSync, zipSync } from "fflate";
 import { createRoot } from "react-dom/client";
 import { useCallback, useEffect, useMemo, useState } from "react";
@@ -34,7 +34,6 @@ import type { SportOption } from "./src/sports";
 const NCAA_TEAMS = ncaaTeamsJson as NcaaTeam[];
 
 const SCHOOL_OPTIONS = [
-  { value: "", label: "Select a school…" },
   ...NCAA_TEAMS.map((t) => ({
     value: t.id,
     label: t.conference ? `${t.name} (${t.conference})` : t.name,
@@ -411,29 +410,28 @@ function AppInner() {
               alignItems: "flex-end",
             }}
           >
-            <Select
+            <Combobox
               label="School"
               value={schoolId}
               options={SCHOOL_OPTIONS}
               onChange={setSchoolId}
               width={320}
+              placeholder="Select a school…"
+              clearable
             />
             {!isCustom && (
               <div style={{ display: "flex", alignItems: "flex-end", gap: 8 }}>
-                <Select
+                <Combobox
                   label="Sport"
                   value={sportSlug}
-                  options={
-                    sportOptions.length > 0
-                      ? sportOptions.map((s) => ({
-                          value: s.slug,
-                          label: s.title,
-                        }))
-                      : [{ value: sportSlug, label: sportsLoading ? "Loading…" : "Select a school…" }]
-                  }
+                  options={sportOptions.map((s) => ({
+                    value: s.slug,
+                    label: s.title,
+                  }))}
                   onChange={setSportSlug}
                   width={220}
                   disabled={sportsLoading || sportOptions.length === 0 || !selectedTeam}
+                  placeholder={sportsLoading ? "Loading…" : "Select a sport…"}
                 />
                 {sportsLoading && <Spinner />}
               </div>
@@ -514,7 +512,7 @@ function AppInner() {
                   flexWrap: "wrap",
                 }}
               >
-                <Select
+                <Combobox
                   label="Format"
                   width={100}
                   value={exportFormat}
@@ -531,7 +529,7 @@ function AppInner() {
                   variant="accent"
                   onClick={downloadExport}
                 />
-                <Select
+                <Combobox
                   label="Images"
                   width={150}
                   value={imageNaming}

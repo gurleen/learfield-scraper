@@ -1,3 +1,4 @@
+import { fetchSidearm, SIDEARM_USER_AGENT, type FetchSidearmEnv } from "../fetch";
 import { resolveOriginalImageUrl } from "../images";
 import type { Coach, Player, RosterResult } from "../types";
 import { parseRosterUrl } from "../types";
@@ -52,8 +53,7 @@ type RostersListResponse = {
 
 const FETCH_HEADERS = {
   Accept: "application/json",
-  "User-Agent":
-    "Mozilla/5.0 (compatible; learfield-scraper/0.1; +https://github.com/gurleen/learfield-scraper)",
+  "User-Agent": SIDEARM_USER_AGENT,
 };
 
 function formatHeight(feet: number | null | undefined, inches: number | null | undefined): string | null {
@@ -117,18 +117,21 @@ function mapCoach(c: SidearmCoach, origin: string): Coach {
   };
 }
 
-async function fetchJson<T>(url: string): Promise<T> {
-  const res = await fetch(url, { headers: FETCH_HEADERS });
+async function fetchJson<T>(url: string, env?: FetchSidearmEnv): Promise<T> {
+  const res = await fetchSidearm(url, { env, headers: FETCH_HEADERS });
   if (!res.ok) {
     throw new Error(`NextGen API failed (${res.status}): ${url}`);
   }
   return res.json() as Promise<T>;
 }
 
-export async function scrapeNextGen(rosterUrl: string): Promise<RosterResult> {
+export async function scrapeNextGen(
+  rosterUrl: string,
+  env?: FetchSidearmEnv,
+): Promise<RosterResult> {
   const { origin, sportSlug, normalizedUrl } = parseRosterUrl(rosterUrl);
 
-  const sports = await fetchJson<SidearmSport[]>(`${origin}/api/v2/Sports`);
+  const sports = await fetchJson<SidearmSport[]>(`${origin}/api/v2/Sports`, env);
   const sport = sports.find((s) => s.globalSportNameSlug === sportSlug);
   if (!sport) {
     throw new Error(`Sport "${sportSlug}" not found on ${origin}`);
@@ -136,6 +139,7 @@ export async function scrapeNextGen(rosterUrl: string): Promise<RosterResult> {
 
   const list = await fetchJson<RostersListResponse>(
     `${origin}/api/v2/Rosters?sportId=${sport.id}`,
+    env,
   );
   const roster = list.items?.[0];
   if (!roster) {
@@ -144,7 +148,10 @@ export async function scrapeNextGen(rosterUrl: string): Promise<RosterResult> {
 
   let detail = roster;
   if (!roster.players?.length && roster.id) {
-    detail = await fetchJson<SidearmRoster>(`${origin}/api/v2/Rosters/${roster.id}`);
+    detail = await fetchJson<SidearmRoster>(
+      `${origin}/api/v2/Rosters/${roster.id}`,
+      env,
+    );
   }
 
   const players = (detail.players ?? []).map((p) => mapPlayer(p, origin, sportSlug));
@@ -162,9 +169,13 @@ export async function scrapeNextGen(rosterUrl: string): Promise<RosterResult> {
   };
 }
 
-export async function isNextGen(origin: string): Promise<boolean> {
+export async function isNextGen(
+  origin: string,
+  env?: FetchSidearmEnv,
+): Promise<boolean> {
   try {
-    const res = await fetch(`${origin}/api/v2/Sports`, {
+    const res = await fetchSidearm(`${origin}/api/v2/Sports`, {
+      env,
       headers: FETCH_HEADERS,
       signal: AbortSignal.timeout(15_000),
     });

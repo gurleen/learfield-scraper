@@ -1,4 +1,6 @@
 import { handleApi } from "./src/api";
+import type { FetchSidearmEnv } from "./src/fetch";
+import { publicModelKey } from "./src/models";
 
 const MODEL_CACHE = "public, max-age=31536000, immutable";
 
@@ -13,8 +15,8 @@ async function serveModel(
   env: Env,
   pathname: string,
 ): Promise<Response> {
-  const key = pathname.replace(/^\/models\//, "");
-  if (!key || key.includes("..")) {
+  const key = publicModelKey(pathname);
+  if (!key) {
     return new Response("Not Found", { status: 404 });
   }
 
@@ -62,7 +64,9 @@ export default {
       return serveModel(request, env, pathname);
     }
 
-    const api = handleApi(request);
+    // Env.BROWSER.quickAction is overloaded; TS only considers the first
+    // signature, which is not assignable to the "content" helper type.
+    const api = handleApi(request, env as FetchSidearmEnv);
     if (api) return api;
 
     return new Response("Not Found", { status: 404 });
