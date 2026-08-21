@@ -1,13 +1,8 @@
 import { zipSync } from "fflate";
+import { fetchOriginalImage } from "./images";
 import type { Player, RosterResult } from "./types";
 
 export type ImageNaming = "named" | "numbered";
-
-const FETCH_HEADERS = {
-  "User-Agent":
-    "Mozilla/5.0 (compatible; learfield-scraper/0.1; +https://github.com/gurleen/learfield-scraper)",
-  Accept: "image/*,*/*",
-};
 
 function slugPart(value: string): string {
   return value
@@ -59,24 +54,6 @@ function uniqueBases(
   });
 }
 
-async function fetchImage(
-  url: string,
-): Promise<{ bytes: Uint8Array; contentType: string | null } | null> {
-  try {
-    const res = await fetch(url, {
-      headers: FETCH_HEADERS,
-      redirect: "follow",
-      signal: AbortSignal.timeout(30_000),
-    });
-    if (!res.ok) return null;
-    const buf = new Uint8Array(await res.arrayBuffer());
-    if (buf.byteLength === 0) return null;
-    return { bytes: buf, contentType: res.headers.get("content-type") };
-  } catch {
-    return null;
-  }
-}
-
 export function parseImageNaming(value: unknown): ImageNaming {
   return value === "numbered" ? "numbered" : "named";
 }
@@ -95,13 +72,13 @@ export async function zipPlayerHeadshots(
   await Promise.all(
     players.map(async (player, index) => {
       const url = player.headshotUrl!;
-      const image = await fetchImage(url);
+      const image = await fetchOriginalImage(url);
       if (!image) {
         skipped += 1;
         return;
       }
 
-      const ext = extensionFromUrl(url, image.contentType);
+      const ext = extensionFromUrl(image.url, image.contentType);
       const name = `${bases[index]}.${ext}`;
       files[name] = image.bytes;
       count += 1;
